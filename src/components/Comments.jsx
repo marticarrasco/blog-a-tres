@@ -26,6 +26,9 @@ export default function Comments({ slug }) {
           imageUploader: false,
           wordLimit: [2, 2000],
           commentSorting: "latest",
+          locale: {
+            placeholder: "Escriu el teu comentari. Es publicarà quan l’aprove l’equip de moderació.",
+          },
           copyright: false,
           dark: false,
         });

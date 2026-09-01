@@ -43,22 +43,25 @@ Per donar accés editorial, instal·la l’aplicació oficial de Pages CMS al re
 1. Connecta el repositori de GitHub a un projecte Vercel.
 2. Usa `npm run build` i el directori `dist`.
 3. Defineix `VITE_SITE_URL` amb el domini públic.
-4. Si els comentaris ja estan validats, defineix `VITE_WALINE_SERVER_URL` i activa `commentsEnabled` a `content/site.json`.
+4. `VITE_WALINE_SERVER_URL` apunta al servei Waline de producció i `commentsEnabled` controla la desactivació d’emergència.
 
 `vercel.json` manté les rutes profundes de l’SPA i afegeix capçaleres de seguretat. Cada canvi de Pages CMS crea un canvi versionat a GitHub i Vercel el torna a desplegar. Els fitxers `sitemap.xml` i `robots.txt` es generen durant el build.
 
 ## Comentaris: Waline + Neon
 
-El client de Waline està integrat, però la bandera de comentaris es manté desactivada fins que l’entorn real supere la prova d’acceptació. El lector només veu el camp de nom; no cal GitHub ni correu. El servidor de Waline i la base Neon són projectes separats i els seus secrets no entren mai al JavaScript públic.
+El client de Waline està integrat amb `https://entre-linies-comments.vercel.app`. El lector només veu el camp de nom; no cal GitHub ni correu. El servidor de Waline i la base Neon són projectes separats i els seus secrets no entren mai al JavaScript públic.
 
-Abans d’activar-lo cal:
+En local, copia `.env.example` a `.env.local` o usa el fitxer local ja configurat. La variable `VITE_WALINE_SERVER_URL` és pública; les credencials de Neon només es recuperen des del projecte Vercel del servidor Waline.
 
-- desplegar Waline a Vercel amb PostgreSQL de Neon;
-- limitar l’origen al domini del blog;
-- crear i provar tres comptes de moderació independents;
-- activar moderació prèvia i protecció antispam/Turnstile si és necessària;
-- verificar aprovació, ocultació i eliminació;
-- revisar errors a Vercel i consum al panell de Neon.
+Configuració aplicada:
+
+- Waline desplegat a Vercel amb PostgreSQL de Neon a Frankfurt;
+- origen limitat al domini del blog i al servidor Waline;
+- moderació prèvia (`COMMENT_AUDIT`) i límit de freqüència activats;
+- user-agent, regió i proxy d’avatar desactivats per minimitzar dades;
+- Akismet mantingut com a protecció antispam integrada.
+
+Queda com a operació inicial registrar el primer administrador a `/ui/register` i crear els altres dos comptes independents abans d’obrir la moderació compartida.
 
 La desactivació és immediata: posa `commentsEnabled` a `false`. Per revocar un moderador, elimina o desactiva el seu compte al panell de Waline. Per substituir credencials, rota-les a Neon/Vercel i torna a desplegar el servei, mai el frontend.
 
