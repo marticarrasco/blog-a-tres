@@ -1,0 +1,20 @@
+{
+  "title": "La desinformació corre més que els fets",
+  "slug": "la-desinformacio-corre-mes-que-els-fets",
+  "author": "content/authors/marti-carrasco.json",
+  "publishedAt": "2026-08-29",
+  "updatedAt": "2026-08-29",
+  "status": "published",
+  "featured": false,
+  "featuredOrder": 4,
+  "summary": "Compartir una història és fàcil; donar-li context demana una mica més de temps.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Formes superposades que representen informació que circula i es transforma.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# La velocitat no és una prova\n\nUna notícia que ens indigna demana ser compartida immediatament. La urgència, però, pot convertir una sospita en una certesa i una frase fora de context en tota una història.\n\nNo cal convertir cada conversa en una investigació. Sovint n'hi ha prou amb preguntar qui ho diu, d'on ve i què falta. En un entorn dissenyat per accelerar-nos, verificar és una forma petita —però important— de responsabilitat."
+    }
+  ]
+}

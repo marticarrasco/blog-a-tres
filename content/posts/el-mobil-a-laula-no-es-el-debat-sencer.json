@@ -1,0 +1,20 @@
+{
+  "title": "El mòbil a l'aula no és el debat sencer",
+  "slug": "el-mobil-a-laula-no-es-el-debat-sencer",
+  "author": "content/authors/jan-sarkar.json",
+  "publishedAt": "2026-08-28",
+  "updatedAt": "2026-08-28",
+  "status": "published",
+  "featured": false,
+  "featuredOrder": 5,
+  "summary": "Parlar de pantalles a l'escola també és parlar d'atenció, criteri i desigualtat.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Composició amb formes equilibrades que suggereix aprenentatge i concentració.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Prohibir és només el primer gest\n\nEl debat sobre el mòbil a l'aula sol acabar en una pregunta binària: dins o fora. Però l'educació digital demana preguntes més incòmodes: sabem concentrar-nos, distingir una font fiable i conviure amb una tecnologia que ja forma part de la vida?\n\nUna escola pot limitar les pantalles i, al mateix temps, ensenyar a fer-les servir amb criteri. La norma ordena l'espai; l'educació prepara per al món que hi ha fora."
+    }
+  ]
+}

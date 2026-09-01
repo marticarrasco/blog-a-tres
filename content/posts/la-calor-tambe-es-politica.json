@@ -1,0 +1,20 @@
+{
+  "title": "La calor també és política",
+  "slug": "la-calor-tambe-es-politica",
+  "author": "content/authors/alejandro-pascual.json",
+  "publishedAt": "2026-08-30",
+  "updatedAt": "2026-08-30",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 3,
+  "summary": "La calor no afecta tothom igual: també revela com planifiquem i protegim les ciutats.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Composició abstracta amb colors càlids i frescos que evoca un estiu intens.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# No és només qüestió de termòmetres\n\nQuan arriba una onada de calor, la recomanació habitual és protegir-se. Però no totes les persones tenen una casa fresca, ombra prop de casa o la possibilitat d'aturar la jornada. El mateix carrer pot ser suportable per a algú i impossible per a algú altre.\n\nAdaptar-nos al clima també vol dir decidir quins espais cuidem, quins horaris revisem i a qui posem al centre. La temperatura és física; la vulnerabilitat, en canvi, també es construeix políticament."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Una ciutat que es mou a un altre ritme",
+  "slug": "una-ciutat-que-es-mou-a-un-altre-ritme",
+  "author": "content/authors/alejandro-pascual.json",
+  "publishedAt": "2026-08-27",
+  "updatedAt": "2026-08-27",
+  "status": "published",
+  "featured": false,
+  "featuredOrder": 6,
+  "summary": "Repensar la mobilitat és decidir quina mena de vida volem fer possible als carrers.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Tres formes connectades que evoquen desplaçaments i espai urbà compartit.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Moure's no és només arribar\n\nUna ciutat que obliga tothom a anar de pressa acaba sent poc habitable. El temps del trajecte, la seguretat del carrer i la qualitat de l'aire també formen part de la mobilitat, encara que no apareguen en el comptador d'un vehicle.\n\nCaminar, pedalar o agafar el transport públic no haurien de ser gestos heroics. Quan una ciutat ofereix opcions reals, no només redueix desplaçaments: amplia la llibertat de les persones que hi viuen."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "L'habitatge no hauria de ser una aposta",
+  "slug": "l-habitatge-no-hauria-ser-una-aposta",
+  "author": "content/authors/jan-sarkar.json",
+  "publishedAt": "2026-08-31",
+  "updatedAt": "2026-08-31",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 2,
+  "summary": "Quan trobar un lloc on viure depén massa de la sort, la ciutat deixa de ser de tothom.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Formes de colors que suggereixen una ciutat compartida i en tensió.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Una clau que pesa massa\n\nParlar d'habitatge com si fora només una qüestió de preus amaga una part del problema. També és una qüestió de temps, d'arrelament i de la possibilitat de construir una vida sense canviar constantment de barri o de ciutat.\n\nUna societat pot créixer molt i, alhora, expulsar les persones que la mantenen viva. L'habitatge no és el premi d'una cursa individual: és la base des d'on comença qualsevol projecte compartit."
+    }
+  ]
+}

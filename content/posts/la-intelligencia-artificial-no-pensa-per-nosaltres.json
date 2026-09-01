@@ -1,0 +1,20 @@
+{
+  "title": "La intel·ligència artificial no pensa per nosaltres",
+  "slug": "la-intelligencia-artificial-no-pensa-per-nosaltres",
+  "author": "content/authors/marti-carrasco.json",
+  "publishedAt": "2026-09-01",
+  "updatedAt": "2026-09-01",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 1,
+  "summary": "La qüestió no és si utilitzarem IA, sinó què decidirem continuar pensant nosaltres.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Formes orgàniques en verd, blau i terracota que representen idees en conversa.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Una eina també canvia els gestos\n\nLa intel·ligència artificial ja no és una promesa llunyana. Escriu, resumeix, tradueix i proposa respostes en uns segons. El seu valor, però, no depén només del que pot fer, sinó de si nosaltres encara sabem què li volem demanar.\n\nDelegar una tasca pot alliberar temps. Delegar el criteri ens deixa sense brúixola. Enmig de tanta resposta instantània, potser la capacitat més actual és continuar fent bones preguntes."
+    }
+  ]
+}
