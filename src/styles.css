@@ -86,6 +86,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .author-mark.voice-mark-2 { background: var(--blue); }
 .author-mark.voice-mark-3 { background: var(--orange); }
 .author-mark img { width: 100%; height: 100%; object-fit: cover; }
+.author-mark svg { width: 72%; height: 72%; display: block; }
 .author-mark-large { width: 54px; height: 54px; }
 
 .author-band { padding-block: clamp(5rem, 9vw, 9rem); background: #111213; color: #fff; }
@@ -302,6 +303,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .author-index { position: static; color: var(--muted); }
 .author-tile-label { color: var(--muted); font: .62rem 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .08em; }
 .author-initial { display: block; margin-bottom: auto; padding-top: 4rem; color: transparent; font-size: clamp(8rem, 16vw, 12rem); font-weight: 600; line-height: .8; letter-spacing: -.15em; -webkit-text-stroke: 1px rgba(16,17,18,.26); transition: color .25s, -webkit-text-stroke-color .25s; }
+.author-silhouette { width: min(13rem, 58%); height: clamp(11rem, 17vw, 14rem); padding-top: 2.4rem; color: rgba(16,17,18,.26); font-size: 0; -webkit-text-stroke: 0; transition: color .25s, transform .25s; }
+.author-silhouette svg { width: 100%; height: 100%; display: block; }
 .author-tile:hover .author-initial, .author-profile:hover .author-initial { color: var(--accent); -webkit-text-stroke-color: var(--accent); }
 .author-tile h3, .author-profile h2 { position: relative; margin-bottom: .55rem; color: var(--ink); }
 .author-tile p, .author-profile p { color: var(--muted); }
@@ -339,6 +342,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .author-tile:nth-child(3), .author-profile:nth-child(3) { --voice-color: var(--green); }
 .author-tile h3, .author-profile h2 { color: var(--voice-color); }
 .author-tile:hover .author-initial, .author-profile:hover .author-initial { color: var(--voice-color); -webkit-text-stroke-color: var(--voice-color); }
+.author-tile:hover .author-silhouette, .author-profile:hover .author-silhouette { color: var(--voice-color); transform: translateY(-4px) rotate(-3deg); }
 
 @media (max-width: 760px) {
   .site-header { height: 68px; }

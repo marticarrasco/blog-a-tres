@@ -145,7 +145,17 @@ function Cover({ post, compact = false, priority = false }) {
 function AuthorMark({ author, large = false }) {
   const className = `author-mark voice-mark-${author?.order || 1} ${large ? "author-mark-large" : ""}`;
   if (author?.avatar) return <span className={className}><img src={author.avatar} alt="" loading="lazy" decoding="async" /></span>;
+  if (author?.handle === "alejandro-pascual") return <span className={className} aria-hidden="true"><AlejandroSilhouette /></span>;
   return <span className={className} aria-hidden="true">{author?.name?.slice(0, 1) || "?"}</span>;
+}
+
+function AlejandroSilhouette() {
+  return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="currentColor" fillRule="evenodd" d="M19 91C25 71 33 45 43 15C45 9 47 5 50 5C53 5 55 9 57 15C67 45 75 71 81 91H65L60 72H40L35 91H19ZM44 59H56L50 31L44 59Z" /></svg>;
+}
+
+function AuthorInitial({ author }) {
+  if (author?.handle === "alejandro-pascual") return <span className="author-initial author-silhouette" aria-hidden="true"><AlejandroSilhouette /></span>;
+  return <span className="author-initial" aria-hidden="true">{author.name.slice(0, 1)}</span>;
 }
 
 function ArticleMeta({ post, navigate, linked = true }) {
@@ -165,7 +175,7 @@ function Manifest({ navigate }) {
 
 function AuthorHighlights({ navigate }) {
   const [ref, visible] = useReveal();
-  return <section ref={ref} className={`author-band reveal-section ${visible ? "is-visible" : ""}`}><div className="section-shell"><div className="section-heading"><h2>Tres veus</h2><Link className="quiet-link" to="/autors" navigate={navigate}>Veure autors <ArrowUpRight size={15} /></Link></div><div className="author-grid">{authors.map((author, index) => <article className="author-tile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><span className="author-initial" aria-hidden="true">{author.name.slice(0, 1)}</span><h3>{author.name}</h3><p>{author.role}</p><span className="author-action">Veure la seva veu <ArrowUpRight size={16} /></span></Link></article>)}</div></div></section>;
+  return <section ref={ref} className={`author-band reveal-section ${visible ? "is-visible" : ""}`}><div className="section-shell"><div className="section-heading"><h2>Tres veus</h2><Link className="quiet-link" to="/autors" navigate={navigate}>Veure autors <ArrowUpRight size={15} /></Link></div><div className="author-grid">{authors.map((author, index) => <article className="author-tile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><AuthorInitial author={author} /><h3>{author.name}</h3><p>{author.role}</p><span className="author-action">Veure la seva veu <ArrowUpRight size={16} /></span></Link></article>)}</div></div></section>;
 }
 
 function ArticlesExplorer({ navigate, heading = true }) {
@@ -191,7 +201,7 @@ function ArticlesPage({ navigate }) {
 }
 
 function AuthorsPage({ navigate }) {
-  return <main className="page-shell collection-page"><Seo title="Autors" description={descriptions.authors} path="/autors" /><header className="simple-page-heading"><p className="eyebrow">Les veus del projecte</p><h1>Autors</h1></header><div className="authors-page-grid">{authors.map((author, index) => <article className="author-profile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><span className="author-initial" aria-hidden="true">{author.name.slice(0, 1)}</span><h2>{author.name}</h2><p>{author.role}</p><span className="author-action">Veure perfil i articles <ArrowUpRight size={16} /></span></Link></article>)}</div></main>;
+  return <main className="page-shell collection-page"><Seo title="Autors" description={descriptions.authors} path="/autors" /><header className="simple-page-heading"><p className="eyebrow">Les veus del projecte</p><h1>Autors</h1></header><div className="authors-page-grid">{authors.map((author, index) => <article className="author-profile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><AuthorInitial author={author} /><h2>{author.name}</h2><p>{author.role}</p><span className="author-action">Veure perfil i articles <ArrowUpRight size={16} /></span></Link></article>)}</div></main>;
 }
 
 function AuthorPage({ author, navigate }) {
