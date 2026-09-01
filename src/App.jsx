@@ -6,7 +6,7 @@ import Seo from "./components/Seo.jsx";
 import { authors, featuredPosts, posts, resolveAuthor, site } from "./content.js";
 
 const descriptions = {
-  home: "Tres persones, tres maneres de mirar i un lloc compartit per pensar per escrit.",
+  home: "Un espai compartit per escriure, discutir i entendre millor les idees.",
   articles: "Explora tots els articles publicats a Entre línies i filtra'ls per autor o data.",
   authors: "Coneix les tres veus independents que escriuen a Entre línies.",
 };
@@ -150,7 +150,7 @@ function AuthorMark({ author, large = false }) {
 }
 
 function AlejandroSilhouette() {
-  return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="currentColor" fillRule="evenodd" d="M19 91C25 71 33 45 43 15C45 9 47 5 50 5C53 5 55 9 57 15C67 45 75 71 81 91H65L60 72H40L35 91H19ZM44 59H56L50 31L44 59Z" /></svg>;
+  return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path fill="transparent" fillRule="evenodd" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="miter" vectorEffect="non-scaling-stroke" d="M19 91L44 10H56L81 91H65L60 72H40L35 91H19ZM44 59H56L50 31L44 59Z" /></svg>;
 }
 
 function AuthorInitial({ author }) {
@@ -170,12 +170,13 @@ function ArticleCard({ post, navigate, featured = false }) {
 
 function Manifest({ navigate }) {
   const [ref, visible] = useReveal();
-  return <section ref={ref} className={`manifest-section reveal-section ${visible ? "is-visible" : ""}`}><div className="manifest-section-shell"><aside className="manifest-index"><span>01</span><span>Manifest</span></aside><div className="manifest-section-content"><p className="manifest-label">Una manera de treballar</p><h2>Escriure per entendre millor.</h2><div className="manifest-divider" /><div className="manifest-section-lower"><div className="manifest-text"><Markdown>{site.manifest}</Markdown></div><div className="manifest-side-note"><span className="manifest-side-number">03</span><p>Tres veus independents.<br />Una conversa oberta.</p><Link className="manifest-link" to="/manifest" navigate={navigate}>Llegir el manifest <ArrowUpRight size={16} /></Link></div></div></div></div></section>;
+  const preview = site.manifest.split("\n\n").slice(0, 3).join("\n\n");
+  return <section ref={ref} className={`manifest-section reveal-section ${visible ? "is-visible" : ""}`}><div className="manifest-section-shell"><div className="manifest-section-content"><p className="manifest-label">MANIFEST EDITORIAL</p><div className="manifest-section-lower"><div className="manifest-text manifest-preview"><Markdown>{preview}</Markdown></div><Link className="manifest-link" to="/manifest" navigate={navigate}>Llegir el manifest <ArrowUpRight size={16} /></Link></div></div></div></section>;
 }
 
 function AuthorHighlights({ navigate }) {
   const [ref, visible] = useReveal();
-  return <section ref={ref} className={`author-band reveal-section ${visible ? "is-visible" : ""}`}><div className="section-shell"><div className="section-heading"><h2>Tres veus</h2><Link className="quiet-link" to="/autors" navigate={navigate}>Veure autors <ArrowUpRight size={15} /></Link></div><div className="author-grid">{authors.map((author, index) => <article className="author-tile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><AuthorInitial author={author} /><h3>{author.name}</h3><p>{author.role}</p><span className="author-action">Veure la seva veu <ArrowUpRight size={16} /></span></Link></article>)}</div></div></section>;
+  return <section ref={ref} className={`author-band reveal-section ${visible ? "is-visible" : ""}`}><div className="section-shell"><div className="section-heading"><h2>Tres veus</h2><Link className="quiet-link" to="/autors" navigate={navigate}>Veure autors <ArrowUpRight size={15} /></Link></div><div className="author-grid">{authors.map((author) => <article className="author-tile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><AuthorInitial author={author} /><h3>{author.name}</h3><p>{author.role}</p><span className="author-action">Veure la seva veu <ArrowUpRight size={16} /></span></Link></article>)}</div></div></section>;
 }
 
 function ArticlesExplorer({ navigate, heading = true }) {
@@ -193,7 +194,7 @@ function ArticlesExplorer({ navigate, heading = true }) {
 }
 
 function Home({ navigate }) {
-  return <main><Seo title={site.name} description={descriptions.home} /><section className="hero section-shell"><div className="hero-copy"><p className="hero-kicker">Entre línies / 2026</p><h1>Les idees també es proven.</h1><p>Un blog a tres veus per pensar amb calma, discrepar i tornar a mirar.</p></div></section><Manifest navigate={navigate} /><section className="section-shell section-block featured-section"><div className="section-heading"><h2>Destacats</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure articles <ArrowUpRight size={15} /></Link></div><div className="featured-grid">{featuredPosts.slice(0, 3).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} featured />)}</div></section><AuthorHighlights navigate={navigate} /><ArticlesExplorer navigate={navigate} heading={false} /></main>;
+  return <main><Seo title={site.name} description={descriptions.home} /><section className="hero section-shell"><div className="hero-copy"><p className="hero-kicker">Entre línies / 2026</p><h1>No escrivim perquè tinguem les coses clares.</h1><p>Escrivim, precisament, per intentar aclarir-les.</p></div></section><Manifest navigate={navigate} /><section className="section-shell section-block featured-section"><div className="section-heading"><h2>Destacats</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure articles <ArrowUpRight size={15} /></Link></div><div className="featured-grid">{featuredPosts.slice(0, 3).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} featured />)}</div></section><AuthorHighlights navigate={navigate} /><ArticlesExplorer navigate={navigate} heading={false} /></main>;
 }
 
 function ArticlesPage({ navigate }) {
@@ -201,7 +202,7 @@ function ArticlesPage({ navigate }) {
 }
 
 function AuthorsPage({ navigate }) {
-  return <main className="page-shell collection-page"><Seo title="Autors" description={descriptions.authors} path="/autors" /><header className="simple-page-heading"><p className="eyebrow">Les veus del projecte</p><h1>Autors</h1></header><div className="authors-page-grid">{authors.map((author, index) => <article className="author-profile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><span className="author-tile-top"><span className="author-index">0{index + 1}</span><span className="author-tile-label">Veu independent</span></span><AuthorInitial author={author} /><h2>{author.name}</h2><p>{author.role}</p><span className="author-action">Veure perfil i articles <ArrowUpRight size={16} /></span></Link></article>)}</div></main>;
+  return <main className="page-shell collection-page"><Seo title="Autors" description={descriptions.authors} path="/autors" /><header className="simple-page-heading"><p className="eyebrow">Les veus del projecte</p><h1>Autors</h1></header><div className="authors-page-grid">{authors.map((author) => <article className="author-profile" key={author.id}><Link to={`/autors/${author.handle}`} navigate={navigate}><AuthorInitial author={author} /><h2>{author.name}</h2><p>{author.role}</p><span className="author-action">Veure perfil i articles <ArrowUpRight size={16} /></span></Link></article>)}</div></main>;
 }
 
 function AuthorPage({ author, navigate }) {
@@ -210,7 +211,7 @@ function AuthorPage({ author, navigate }) {
   return <main className="page-shell author-detail"><Seo title={author.name} description={author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} /><Link className="back-link" to="/autors" navigate={navigate}><ChevronLeft size={16} />Autors</Link><header className="author-detail-header"><AuthorMark author={author} large /><div><h1>{author.name}</h1><p>{author.role}</p></div></header><div className="author-bio"><Markdown>{author.bio}</Markdown>{author.links?.length > 0 && <nav aria-label={`Enllaços de ${author.name}`}>{author.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}</nav>}</div><section className="section-block"><div className="section-heading"><h2>{authored.length ? "Articles" : "Encara no hi ha articles"}</h2></div><div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section></main>;
 }
 
-function ManifestPage() { return <main className="manifest-page-modern"><Seo title="Manifest" description="El manifest editorial d'Entre línies: escriure per entendre millor." path="/manifest" /><div className="manifest-page-inner"><aside className="manifest-page-aside"><span>01</span><span>Manifest editorial</span></aside><article><p className="manifest-label">Escriure per entendre</p><h1>Escriure per entendre millor.</h1><div className="manifest-page-divider" /><div className="manifest-long"><Markdown>{site.manifest}</Markdown><p>Aquest és un projecte independent i compartit. No hi ha una veu oficial ni una opinió de grup.</p></div></article></div></main>; }
+function ManifestPage() { return <main className="manifest-page-modern"><Seo title="Manifest" description="El manifest editorial d'Entre línies: escriure per entendre millor." path="/manifest" /><div className="manifest-page-inner"><aside className="manifest-page-aside"><span>01</span><span>Manifest editorial</span></aside><article><p className="manifest-label">Escriure per entendre</p><h1>Escriure per entendre millor.</h1><div className="manifest-page-divider" /><div className="manifest-long"><Markdown>{site.manifest}</Markdown></div></article></div></main>; }
 
 function safeExternalUrl(value) {
   try { const url = new URL(value); return ["https:"].includes(url.protocol) ? url : null; } catch { return null; }
@@ -263,6 +264,7 @@ export default function App() {
   const { path, navigate } = usePath();
   const articleSlug = path.match(/^\/articles\/([^/]+)$/)?.[1];
   const authorHandle = path.match(/^\/autors\/([^/]+)$/)?.[1];
+  const isReadingPage = Boolean(articleSlug || authorHandle || path === "/manifest" || legalPages[path]);
   let page;
   if (path === "/") page = <Home navigate={navigate} />;
   else if (path === "/articles") page = <ArticlesPage navigate={navigate} />;
@@ -272,5 +274,5 @@ export default function App() {
   else if (articleSlug) page = <ArticlePage post={posts.find((item) => item.slug === articleSlug)} navigate={navigate} />;
   else if (authorHandle) page = <AuthorPage author={authors.find((item) => item.handle === authorHandle)} navigate={navigate} />;
   else page = <NotFound navigate={navigate} />;
-  return <><a className="skip-link" href="#main-content">Saltar al contingut</a><ReadingProgress /><div className="site-frame"><GlobalThreads path={path} /><Header navigate={navigate} path={path} /><div id="main-content">{page}</div><Footer navigate={navigate} /></div></>;
+  return <><a className="skip-link" href="#main-content">Saltar al contingut</a><ReadingProgress /><div className={`site-frame${isReadingPage ? " is-reading-page" : ""}`}>{path === "/" && <GlobalThreads path={path} />}<Header navigate={navigate} path={path} /><div id="main-content">{page}</div><Footer navigate={navigate} /></div></>;
 }
