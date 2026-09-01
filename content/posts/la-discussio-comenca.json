@@ -1,0 +1,26 @@
+{
+  "title": "La discussió comença quan deixem de defensar-nos",
+  "slug": "la-discussio-comenca",
+  "author": "content/authors/jan-sarcar.json",
+  "publishedAt": "2026-08-27",
+  "updatedAt": "2026-08-29",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 2,
+  "summary": "Discutir no sempre és convéncer: de vegades és entendre què està en joc.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Composició editorial abstracta amb tres formes que s'entrellacen.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Una conversa no és una batalla\n\nQuan una persona exposa una idea, sovint escoltem per preparar la resposta. Però una conversa interessant comença quan escoltem per entendre quina pregunta hi ha darrere d'aquella idea.\n\nAixò no vol dir renunciar a les pròpies conviccions. Vol dir fer-les prou resistents per suportar una pregunta difícil."
+    },
+    {
+      "type": "embed",
+      "service": "youtube",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "title": "Exemple de vídeo extern carregat només amb consentiment"
+    }
+  ]
+}

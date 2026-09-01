@@ -1,0 +1,25 @@
+{
+  "title": "Escriure per pensar",
+  "slug": "escriure-per-pensar",
+  "author": "content/authors/marti-carrasco.json",
+  "publishedAt": "2026-08-30",
+  "updatedAt": "2026-08-30",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 1,
+  "summary": "Quan una opinió passa pel paper, deixa de ser només una intuïció.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Formes orgàniques en verd, blau i terracota que representen tres veus en conversa.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# Pensar més a poc a poc\n\nUna opinió pot aparéixer en un instant, però construir-la bé demana temps. Escriure ens obliga a posar ordre allà on només hi havia una sensació.\n\nNo volem tancar les converses, sinó fer-les més interessants. Un article pot ser una primera versió d'una idea: prou clara per compartir-la i prou oberta per revisar-la."
+    },
+    {
+      "type": "opinion",
+      "author": "content/authors/jan-sarcar.json",
+      "body": "Jo afegiria que escriure també ens permet detectar què no sabem. A vegades l'aportació més honesta d'un text és el dubte que queda al final."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Un blog sense centre",
+  "slug": "un-blog-sense-centre",
+  "author": "content/authors/alejandro-pasqual.json",
+  "publishedAt": "2026-08-24",
+  "updatedAt": "2026-08-24",
+  "status": "published",
+  "featured": true,
+  "featuredOrder": 3,
+  "summary": "Tres veus independents, un lloc compartit i cap obligació de pensar igual.",
+  "cover": "/assets/articles/covers/entre-linies.png",
+  "coverAlt": "Tres formes de color sobre paper càlid simbolitzen veus independents.",
+  "lang": "ca",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "# La pluralitat com a punt de partida\n\nAquest espai no té una opinió oficial. Té una pràctica compartida: parar, pensar i escriure.\n\nPer això dos articles poden contradir-se sense que el projecte entre en contradicció. El que compartim no és la conclusió, sinó la voluntat d'arribar-hi amb una mica més d'atenció."
+    }
+  ]
+}

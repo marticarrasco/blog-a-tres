@@ -1,0 +1,226 @@
+media:
+  - name: articles
+    label: Imatges i media dels articles
+    input: public/assets/articles
+    output: /assets/articles
+    categories: [image]
+    extensions: [jpg, jpeg, png, webp, gif]
+    rename: safe
+
+content:
+  - name: posts
+    label: Articles
+    type: collection
+    path: content/posts
+    filename: "{slug}.json"
+    view:
+      primary: title
+      fields: [title, author, publishedAt, status, featured]
+      sort: publishedAt
+      default_sort: desc
+    fields:
+      - name: title
+        label: Títol
+        type: string
+      - name: slug
+        label: URL
+        type: string
+      - name: author
+        label: Autor
+        type: reference
+        options:
+          collection: authors
+          search: name
+          value: "{path}"
+          label: "{name}"
+      - name: publishedAt
+        label: Data de publicació
+        type: date
+      - name: updatedAt
+        label: Última actualització
+        type: date
+      - name: status
+        label: Estat
+        type: select
+        options:
+          values: [draft, published, archived]
+        default: draft
+      - name: featured
+        label: Article destacat
+        type: boolean
+        default: false
+      - name: featuredOrder
+        label: Ordre del destacat
+        type: number
+        required: false
+      - name: summary
+        label: Resum
+        type: text
+      - name: lang
+        label: Idioma del text
+        type: select
+        options:
+          values: [ca, es, en]
+        default: ca
+      - name: cover
+        label: Imatge de portada
+        type: image
+        required: true
+        options:
+          media: articles
+          path: covers
+      - name: coverAlt
+        label: Text alternatiu de la portada
+        type: string
+        description: Descriu la imatge quan aporte informació. Deixa'l buit només si és purament decorativa.
+        required: false
+      - name: blocks
+        label: Contingut
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            fields:
+              - name: body
+                label: Text
+                type: rich-text
+                options:
+                  format: markdown
+                  media: articles
+                  path: inline
+          - name: image
+            label: Imatge
+            fields:
+              - name: src
+                label: Imatge
+                type: image
+                options:
+                  media: articles
+                  path: inline
+              - name: alt
+                label: Text alternatiu
+                type: string
+                required: false
+              - name: caption
+                label: Peu d'imatge
+                type: string
+                required: false
+              - name: width
+                label: Amplada
+                type: select
+                options:
+                  values: [small, medium, large, full]
+                default: large
+              - name: align
+                label: Alineació
+                type: select
+                options:
+                  values: [left, center, right]
+                default: center
+          - name: embed
+            label: Contingut incrustat
+            fields:
+              - name: service
+                label: Servei
+                type: select
+                options:
+                  values: [twitter, instagram, youtube, webpage]
+              - name: url
+                label: URL
+                type: string
+              - name: title
+                label: Títol accessible
+                type: string
+                required: false
+          - name: opinion
+            label: Opinió d'un altre autor
+            fields:
+              - name: author
+                label: Autor
+                type: reference
+                options:
+                  collection: authors
+                  search: name
+                  value: "{path}"
+                  label: "{name}"
+              - name: body
+                label: Opinió breu
+                type: rich-text
+                options:
+                  format: markdown
+
+  - name: authors
+    label: Autors
+    type: collection
+    path: content/authors
+    filename: "{handle}.json"
+    view:
+      primary: name
+      fields: [name, handle]
+    fields:
+      - name: order
+        label: Ordre de presentació
+        type: number
+        description: L'ordre en què apareix l'autor al web.
+      - name: name
+        label: Nom
+        type: string
+      - name: handle
+        label: Identificador
+        type: string
+      - name: role
+        label: Frase curta
+        type: string
+      - name: bio
+        label: Biografia
+        type: rich-text
+        options:
+          format: markdown
+      - name: avatar
+        label: Fotografia
+        type: image
+        required: false
+        options:
+          media: articles
+          path: avatars
+      - name: links
+        label: Enllaços
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Nom
+            type: string
+          - name: url
+            label: URL
+            type: string
+
+  - name: site
+    label: Configuració del lloc
+    type: file
+    path: content/site.json
+    fields:
+      - name: name
+        label: Nom del projecte
+        type: string
+      - name: tagline
+        label: Subtítol
+        type: string
+      - name: manifest
+        label: Manifest
+        type: rich-text
+        options:
+          format: markdown
+      - name: commentsEnabled
+        label: Comentaris actius
+        type: boolean
+        default: false
+      - name: description
+        label: Descripció del lloc
+        type: text
+      - name: url
+        label: Domini públic
+        type: string
+        required: false
