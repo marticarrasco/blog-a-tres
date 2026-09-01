@@ -3,11 +3,52 @@ title: Prompt base per generar imatges amb l'estètica de l'app
 slug: prompt-imatges-estetica-app
 updatedAt: 2026-09-01
 ---
+Use case: stylized-concept
 
-Prompt base:
+Asset type: editorial blog inline image
 
-```text
-Genera una imatge editorial contemporània per a un blog d'idees anomenat «Entre línies». Estètica de revista impresa i cultura visual independent: composició conceptual, molt d'espai negatiu, formes geomètriques i una textura subtil de paper. Paleta limitada a blanc trencat, negre tinta i un únic color d'accent entre taronja terracota, blau cobalt o verd àcid. Contrast alt, llum suau, enquadrament sobri i detall analògic lleuger. La imatge ha de transmetre curiositat, pensament crític i pausa; ha de semblar una peça editorial cuidada, no una il·lustració publicitària. Sense text llegible, sense logotips, sense marques d'aigua, sense estètica corporativa ni efectes 3D brillants.
-```
+Primary request:
 
-Quan calga, adapta el subjecte i el color d'accent al tema de l'article, però conserva sempre la composició neta, la paleta reduïda i la textura de paper.
+Create a thoughtful editorial illustration about [ARTICLE TOPIC].
+
+Use a clear visual metaphor related to [MAIN IDEA], without being literal or advertising-like.
+
+Scene/backdrop:
+
+A minimal contemporary setting inspired by Mediterranean urban life, textured paper, abstract architecture and generous negative space.
+
+Subject:
+
+A visual representation of [SPECIFIC SUBJECT], conveying reflection, tension and human perspective.
+
+Style/medium:
+
+Sophisticated editorial collage, tactile paper textures, subtle grain, layered cut-paper forms, premium independent magazine art direction.
+
+Composition/framing:
+
+Wide landscape composition, balanced focal point, visually readable at article size, no readable text.
+
+Lighting/mood:
+
+Soft directional light, reflective and contemplative mood, with a small sense of hope.
+
+Color palette:
+
+Warm ivory, charcoal, muted terracotta, moss green and deep blue.
+
+Materials/textures:
+
+Paper cutouts, cardboard edges, translucent vellum layers, pencil or ink marks without legible words.
+
+Text:
+
+None.
+
+Constraints:
+
+No logos, no brands, no watermark, no readable text, no corporate aesthetic.
+
+Avoid:
+
+Generic stock photography, clichés, excessive clutter, neon cyberpunk, glossy 3D effects and sensationalism.
