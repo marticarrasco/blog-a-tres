@@ -224,3 +224,33 @@ content:
         label: Domini públic
         type: string
         required: false
+
+  - name: notes
+    label: NOTES
+    type: collection
+    path: content/notes
+    filename: "{slug}.md"
+    format: yaml-frontmatter
+    view:
+      primary: title
+      fields: [title, updatedAt]
+      sort: updatedAt
+      default:
+        sort: updatedAt
+        order: desc
+    fields:
+      - name: title
+        label: Títol
+        type: string
+      - name: slug
+        label: Identificador
+        type: string
+        description: Nom curt i únic per al fitxer de la nota.
+      - name: updatedAt
+        label: Última actualització
+        type: date
+      - name: body
+        label: Nota
+        type: rich-text
+        options:
+          format: markdown

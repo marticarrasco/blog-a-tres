@@ -15,6 +15,14 @@
     {
       "type": "text",
       "body": "# No és només qüestió de termòmetres\n\nQuan arriba una onada de calor, la recomanació habitual és protegir-se. Però no totes les persones tenen una casa fresca, ombra prop de casa o la possibilitat d'aturar la jornada. El mateix carrer pot ser suportable per a algú i impossible per a algú altre.\n\nAdaptar-nos al clima també vol dir decidir quins espais cuidem, quins horaris revisem i a qui posem al centre. La temperatura és física; la vulnerabilitat, en canvi, també es construeix políticament."
+    },
+    {
+      "type": "image",
+      "src": "/assets/articles/inline/calor-ciutat.png",
+      "alt": "Un carrer urbà dividit entre una zona de formigó exposada al sol i una zona d'ombra amb arbres i un banc.",
+      "caption": "L'ombra, l'aigua i els espais públics també són infraestructura climàtica.",
+      "width": "large",
+      "align": "center"
     }
   ]
 }

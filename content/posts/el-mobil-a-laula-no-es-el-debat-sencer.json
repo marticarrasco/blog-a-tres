@@ -15,6 +15,14 @@
     {
       "type": "text",
       "body": "# Prohibir és només el primer gest\n\nEl debat sobre el mòbil a l'aula sol acabar en una pregunta binària: dins o fora. Però l'educació digital demana preguntes més incòmodes: sabem concentrar-nos, distingir una font fiable i conviure amb una tecnologia que ja forma part de la vida?\n\nUna escola pot limitar les pantalles i, al mateix temps, ensenyar a fer-les servir amb criteri. La norma ordena l'espai; l'educació prepara per al món que hi ha fora."
+    },
+    {
+      "type": "image",
+      "src": "/assets/articles/inline/educacio-atencio.png",
+      "alt": "Un telèfon cap per avall en un pupitre, al costat d'un quadern, un llapis i la llum d'una aula.",
+      "caption": "Protegir l'atenció també és una manera d'aprendre a conviure amb la tecnologia.",
+      "width": "large",
+      "align": "center"
     }
   ]
 }

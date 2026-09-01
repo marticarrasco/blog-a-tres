@@ -25,6 +25,7 @@ La validació comprova camps obligatoris, slugs, autors, dates, portades, mida i
 
 - Articles: `content/posts/*.json`
 - Autors: `content/authors/*.json`
+- Notes compartides: `content/notes/*.md` (col·lecció `NOTES` a Pages CMS)
 - Configuració: `content/site.json`
 - Editor: `.pages.yml`
 - Portades: `public/assets/articles/covers/`
@@ -32,6 +33,8 @@ La validació comprova camps obligatoris, slugs, autors, dates, portades, mida i
 - Avatars: `public/assets/articles/avatars/`
 
 La font de veritat és [PROJECT-REQUIREMENTS.md](PROJECT-REQUIREMENTS.md). El model de Pages CMS permet text enriquit, imatges, embeds i una opinió alternativa. Els fitxers d’imatge acceptats són JPEG, PNG, WebP i GIF, amb noms sanejats i un límit de 5 MB verificat abans del build. SVG i pujada directa de vídeo queden desactivats en la primera versió.
+
+Les notes són un espai intern compartit per a l’equip editorial: serveixen per guardar prompts, criteris i recursos de treball, no es publiquen al web. Per afegir-ne una, entra a `NOTES` dins Pages CMS i crea una nota nova; el repositori la guardarà a `content/notes/`.
 
 Per donar accés editorial, instal·la l’aplicació oficial de Pages CMS al repositori i invita els tres autors com a col·laboradors individuals. No compartisques contrasenyes ni tokens. Cada invitació es revoca des de Pages CMS; l’accés de GitHub App es revoca des de la configuració del repositori. Els col·laboradors poden editar contingut i mitjans, però només una persona amb accés GitHub pot canviar `.pages.yml`.
 

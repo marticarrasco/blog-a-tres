@@ -15,6 +15,14 @@
     {
       "type": "text",
       "body": "# Una eina també canvia els gestos\n\nLa intel·ligència artificial ja no és una promesa llunyana. Escriu, resumeix, tradueix i proposa respostes en uns segons. El seu valor, però, no depén només del que pot fer, sinó de si nosaltres encara sabem què li volem demanar.\n\nDelegar una tasca pot alliberar temps. Delegar el criteri ens deixa sense brúixola. Enmig de tanta resposta instantània, potser la capacitat més actual és continuar fent bones preguntes."
+    },
+    {
+      "type": "image",
+      "src": "/assets/articles/inline/ia-criteri.png",
+      "alt": "Quadern amb una pregunta manuscrita davant d'una xarxa abstracta d'intel·ligència artificial.",
+      "caption": "Una eina pot accelerar la resposta; el criteri continua sent nostre.",
+      "width": "large",
+      "align": "center"
     }
   ]
 }

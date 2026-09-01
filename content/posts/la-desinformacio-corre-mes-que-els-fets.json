@@ -15,6 +15,14 @@
     {
       "type": "text",
       "body": "# La velocitat no és una prova\n\nUna notícia que ens indigna demana ser compartida immediatament. La urgència, però, pot convertir una sospita en una certesa i una frase fora de context en tota una història.\n\nNo cal convertir cada conversa en una investigació. Sovint n'hi ha prou amb preguntar qui ho diu, d'on ve i què falta. En un entorn dissenyat per accelerar-nos, verificar és una forma petita —però important— de responsabilitat."
+    },
+    {
+      "type": "image",
+      "src": "/assets/articles/inline/desinformacio-context.png",
+      "alt": "Fragments de paper que circulen cap a una lupa i unes pàgines ordenades en un centre tranquil.",
+      "caption": "Abans de compartir, encara podem aturar-nos i mirar el context.",
+      "width": "large",
+      "align": "center"
     }
   ]
 }
