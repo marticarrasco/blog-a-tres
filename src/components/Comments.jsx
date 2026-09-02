@@ -27,7 +27,7 @@ export default function Comments({ slug }) {
           wordLimit: [2, 2000],
           commentSorting: "latest",
           locale: {
-            placeholder: "Escriu el teu comentari. Es publicarà quan l’aprove l’equip de moderació.",
+            placeholder: "Escriu el teu comentari. Es publicarà immediatament.",
           },
           copyright: false,
           dark: false,
@@ -39,7 +39,7 @@ export default function Comments({ slug }) {
 
   if (!site.commentsEnabled) return null;
   if (!serverURL) {
-    return <section className="comments-placeholder" aria-live="polite"><MessageCircle size={19} /><div><strong>Conversa temporalment tancada</strong><p>Els comentaris s’activaran quan el servei de moderació estiga configurat.</p></div></section>;
+    return <section className="comments-placeholder" aria-live="polite"><MessageCircle size={19} /><div><strong>Conversa temporalment tancada</strong><p>Els comentaris s’activaran quan el servei estiga disponible.</p></div></section>;
   }
   return <section aria-label="Comentaris"><p className="comment-privacy">En comentar, el teu nom i el contingut del missatge es publicaran. No et demanem correu electrònic.</p>{error ? <p className="form-error" role="alert">{error}</p> : <div ref={containerRef} className="comments-waline" />}</section>;
 }

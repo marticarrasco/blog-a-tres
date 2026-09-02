@@ -57,11 +57,11 @@ Configuració aplicada:
 
 - Waline desplegat a Vercel amb PostgreSQL de Neon a Frankfurt;
 - origen limitat al domini del blog i al servidor Waline;
-- moderació prèvia (`COMMENT_AUDIT`) i límit de freqüència activats;
+- publicació automàtica (`COMMENT_AUDIT=false`) i límit de freqüència activat;
 - user-agent, regió i proxy d’avatar desactivats per minimitzar dades;
 - Akismet mantingut com a protecció antispam integrada.
 
-Queda com a operació inicial registrar el primer administrador a `/ui/register` i crear els altres dos comptes independents abans d’obrir la moderació compartida.
+Queda com a operació inicial registrar el primer administrador a `/ui/register` i crear els altres dos comptes independents per gestionar denúncies i retirar contingut quan calga.
 
 La desactivació és immediata: posa `commentsEnabled` a `false`. Per revocar un moderador, elimina o desactiva el seu compte al panell de Waline. Per substituir credencials, rota-les a Neon/Vercel i torna a desplegar el servei, mai el frontend.
 

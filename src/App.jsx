@@ -248,7 +248,7 @@ function ArticlePage({ post, navigate }) {
 const legalPages = {
   "/privacitat": ["Privacitat", "Privacitat sense perfils innecessaris", "No utilitzem analítica publicitària ni creem perfils de lectura. Quan els comentaris estiguen actius, el nom i el text aportats es publicaran i es guardaran al servei de comentaris. Els continguts externs només es carreguen després d’una acció explícita."],
   "/avis-legal": ["Avís legal", "Un projecte editorial independent", "Entre línies és un projecte compartit sense finalitat comercial. Cada article expressa l’opinió personal del seu autor. La titularitat, el domini i la llicència definitiva dels textos s’indicaran abans del llançament públic."],
-  "/comentaris": ["Política de comentaris", "Conversa oberta, moderació clara", "Els comentaris poden discrepar, però no poden incloure assetjament, spam, dades personals alienes ni contingut il·legal. Inicialment quedaran pendents de moderació. Els tres autors podran ocultar o eliminar aportacions i documentaran les decisions sensibles."],
+  "/comentaris": ["Política de comentaris", "Conversa oberta, moderació clara", "Els comentaris poden discrepar, però no poden incloure assetjament, spam, dades personals alienes ni contingut il·legal. Es publicaran immediatament. Els tres autors podran ocultar o eliminar aportacions i documentaran les decisions sensibles."],
   "/contacte": ["Contacte", "Encara no publiquem un canal de contacte", "L’equip ha decidit no mostrar una adreça provisional. Abans del llançament públic s’afegirà un canal real i es definirà qui respon les consultes i les peticions de retirada de contingut."],
 };
 
