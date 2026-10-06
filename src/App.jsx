@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronLeft, ExternalLink, Menu, MessageCircle, Share2, X } from "lucide-react";
 import Markdown from "./components/Markdown.jsx";
 import Comments from "./components/Comments.jsx";
@@ -17,8 +17,10 @@ function usePath() {
     const next = to.replace(/\/$/, "") || "/";
     window.history.pushState({}, "", next);
     setPath(next);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [path]);
   useEffect(() => {
     const onPop = () => setPath(window.location.pathname.replace(/\/$/, "") || "/");
     window.addEventListener("popstate", onPop);
@@ -135,7 +137,7 @@ function Header({ navigate, path }) {
   const [open, setOpen] = useState(false);
   useEffect(() => setOpen(false), [path]);
   const items = [["/articles", "Articles"], ["/autors", "Autors"], ["/manifest", "Manifest"]];
-  return <header className="site-header"><Link className="wordmark" to="/" navigate={navigate} aria-label="Entre línies, inici"><span className="wordmark-monogram" aria-hidden="true">EL</span><span><strong>{site.name}</strong><small>A tres veus</small></span></Link><nav id="main-navigation" className={open ? "site-nav is-open" : "site-nav"} aria-label="Navegació principal">{items.map(([to, label]) => <Link key={to} to={to} navigate={navigate} aria-current={path === to ? "page" : undefined}>{label}</Link>)}</nav><button className="menu-toggle" onClick={() => setOpen((value) => !value)} type="button" aria-label={open ? "Tancar menú" : "Obrir menú"} aria-expanded={open} aria-controls="main-navigation">{open ? <X size={20} /> : <Menu size={20} />}</button></header>;
+  return <header className="site-header"><Link className="wordmark" to="/" navigate={navigate} aria-label="Entre línies, inici"><img className="brand-logo brand-logo-header" src="/assets/brand/entre-linies-logo.png" alt="" /></Link><nav id="main-navigation" className={open ? "site-nav is-open" : "site-nav"} aria-label="Navegació principal">{items.map(([to, label]) => <Link key={to} to={to} navigate={navigate} aria-current={path === to ? "page" : undefined}>{label}</Link>)}</nav><button className="menu-toggle" onClick={() => setOpen((value) => !value)} type="button" aria-label={open ? "Tancar menú" : "Obrir menú"} aria-expanded={open} aria-controls="main-navigation">{open ? <X size={20} /> : <Menu size={20} />}</button></header>;
 }
 
 function Cover({ post, compact = false, priority = false }) {
@@ -194,7 +196,7 @@ function ArticlesExplorer({ navigate, heading = true }) {
 }
 
 function Home({ navigate }) {
-  return <main><Seo title={site.name} description={descriptions.home} /><section className="hero section-shell"><div className="hero-copy"><p className="hero-kicker">Entre línies / 2026</p><h1>No escrivim perquè tinguem les coses clares.</h1><p>Escrivim, precisament, per intentar aclarir-les.</p></div></section><Manifest navigate={navigate} /><section className="section-shell section-block featured-section"><div className="section-heading"><h2>Destacats</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure articles <ArrowUpRight size={15} /></Link></div><div className="featured-grid">{featuredPosts.slice(0, 3).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} featured />)}</div></section><AuthorHighlights navigate={navigate} /><ArticlesExplorer navigate={navigate} heading={false} /></main>;
+  return <main><Seo title={site.name} description={descriptions.home} /><section className="hero section-shell"><div className="hero-copy"><h1>Les idees també<br />necessiten temps.</h1><p>Escrivim, precisament, per intentar aclarir-les.</p></div></section><Manifest navigate={navigate} /><section className="section-shell section-block featured-section"><div className="section-heading"><h2>Destacats</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure articles <ArrowUpRight size={15} /></Link></div><div className="featured-grid">{featuredPosts.slice(0, 3).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} featured />)}</div></section><AuthorHighlights navigate={navigate} /><ArticlesExplorer navigate={navigate} heading={false} /></main>;
 }
 
 function ArticlesPage({ navigate }) {
@@ -208,10 +210,11 @@ function AuthorsPage({ navigate }) {
 function AuthorPage({ author, navigate }) {
   if (!author) return <NotFound navigate={navigate} />;
   const authored = posts.filter((post) => post.author.id === author.id);
-  return <main className="page-shell author-detail"><Seo title={author.name} description={author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} /><Link className="back-link" to="/autors" navigate={navigate}><ChevronLeft size={16} />Autors</Link><header className="author-detail-header"><AuthorMark author={author} large /><div><h1>{author.name}</h1><p>{author.role}</p></div></header><div className="author-bio"><Markdown>{author.bio}</Markdown>{author.links?.length > 0 && <nav aria-label={`Enllaços de ${author.name}`}>{author.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}</nav>}</div><section className="section-block"><div className="section-heading"><h2>{authored.length ? "Articles" : "Encara no hi ha articles"}</h2></div><div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section></main>;
+  const isDetailedProfile = Boolean(author.headline || author.intro || author.about?.length || author.topics?.length || author.principles?.length);
+  return <main className={`page-shell author-detail${isDetailedProfile ? " author-detail-rich" : ""}`}><Seo title={author.name} description={author.headline || author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} /><Link className="back-link" to="/autors" navigate={navigate}><ChevronLeft size={16} />Autors</Link><header className="author-detail-header"><AuthorMark author={author} large /><div><p className="eyebrow">Una veu d'Entre línies</p><h1>{author.name}</h1><p>{author.role}</p></div></header>{isDetailedProfile && <><section className="author-introduction"><p className="author-headline">{author.headline}</p><p>{author.intro}</p></section><section className="author-story"><div className="author-story-label"><span>01</span><span>Des d'on escric</span></div><div className="author-story-copy">{author.about?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section><section className="author-topics"><div className="section-heading"><div><p className="eyebrow">Quatre fils que es repeteixen</p><h2>Temes que em fan preguntes</h2></div></div><div className="author-topic-grid">{author.topics?.map((topic, index) => <article className="author-topic" key={topic.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{topic.title}</h3><p>{topic.text}</p></article>)}</div></section><section className="author-method"><div className="author-method-heading"><p className="eyebrow">Una manera de treballar</p><h2>Abans de publicar, intento...</h2></div><ol>{author.principles?.map((principle) => <li key={principle}>{principle}</li>)}</ol></section></>}<section className="section-block author-writing"><div className="section-heading"><div><p className="eyebrow">Textos publicats</p><h2>{authored.length ? "Articles de Martí" : "Encara no hi ha articles"}</h2></div></div><div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section>{author.links?.length > 0 && <nav className="author-links" aria-label={`Enllaços de ${author.name}`}>{author.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}</nav>}</main>;
 }
 
-function ManifestPage() { return <main className="manifest-page-modern"><Seo title="Manifest" description="El manifest editorial d'Entre línies: escriure per entendre millor." path="/manifest" /><div className="manifest-page-inner"><aside className="manifest-page-aside"><span>01</span><span>Manifest editorial</span></aside><article><p className="manifest-label">Escriure per entendre</p><h1>Escriure per entendre millor.</h1><div className="manifest-page-divider" /><div className="manifest-long"><Markdown>{site.manifest}</Markdown></div></article></div></main>; }
+function ManifestPage() { return <main className="manifest-page-modern"><Seo title="Manifest" description="El manifest editorial d'Entre línies: escriure per entendre millor." path="/manifest" /><div className="manifest-page-inner"><article><p className="manifest-label">Manifest Editorial</p><h1>Una mica de context</h1><div className="manifest-page-divider" /><div className="manifest-long"><Markdown>{site.manifest}</Markdown></div></article></div></main>; }
 
 function safeExternalUrl(value) {
   try { const url = new URL(value); return ["https:"].includes(url.protocol) ? url : null; } catch { return null; }
@@ -257,7 +260,7 @@ function LegalPage({ path }) { const [label, title, body] = legalPages[path]; re
 function NotFound({ navigate }) { return <main className="page-shell not-found"><Seo title="Pàgina no trobada" description="Aquesta pàgina no existeix o ja no és pública." path={window.location.pathname} /><p className="eyebrow">Error 404</p><h1>Aquesta línia<br /><em>no porta enlloc.</em></h1><p>La pàgina no existeix, ha canviat d’adreça o ja no és pública.</p><Link className="text-button" to="/" navigate={navigate}>Tornar a l’inici <ArrowUpRight size={15} /></Link></main>; }
 
 function Footer({ navigate }) {
-  return <footer className="site-footer"><div><span className="footer-monogram" aria-hidden="true">EL</span><p><strong>{site.name}</strong><br />A tres veus.</p></div><nav className="footer-links" aria-label="Informació del projecte"><Link to="/manifest" navigate={navigate}>Manifest</Link><Link to="/privacitat" navigate={navigate}>Privacitat</Link><Link to="/comentaris" navigate={navigate}>Comentaris</Link><Link to="/contacte" navigate={navigate}>Contacte</Link><Link to="/avis-legal" navigate={navigate}>Avís legal</Link></nav><small>© 2026</small></footer>;
+  return <footer className="site-footer"><div><Link className="footer-logo-link" to="/" navigate={navigate} aria-label="Entre línies, inici"><img className="brand-logo brand-logo-footer" src="/assets/brand/entre-linies-logo.png" alt="" loading="lazy" decoding="async" /></Link></div><nav className="footer-links" aria-label="Informació del projecte"><Link to="/manifest" navigate={navigate}>Manifest</Link><Link to="/privacitat" navigate={navigate}>Privacitat</Link><Link to="/comentaris" navigate={navigate}>Comentaris</Link><Link to="/contacte" navigate={navigate}>Contacte</Link><Link to="/avis-legal" navigate={navigate}>Avís legal</Link></nav><small>© 2026</small></footer>;
 }
 
 export default function App() {

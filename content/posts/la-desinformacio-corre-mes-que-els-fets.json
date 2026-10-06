@@ -3,13 +3,13 @@
   "slug": "la-desinformacio-corre-mes-que-els-fets",
   "author": "content/authors/marti-carrasco.json",
   "publishedAt": "2026-08-29",
-  "updatedAt": "2026-08-29",
+  "updatedAt": "2026-09-09",
   "status": "published",
   "featured": false,
   "featuredOrder": 4,
   "summary": "Compartir una història és fàcil; donar-li context demana una mica més de temps.",
-  "cover": "/assets/articles/covers/entre-linies.png",
-  "coverAlt": "Formes superposades que representen informació que circula i es transforma.",
+  "cover": "/assets/articles/inline/desinformacio-context-web.jpg",
+  "coverAlt": "Una persona consulta una notícia en un telèfon mòbil davant d'una pantalla d'ordinador.",
   "lang": "ca",
   "blocks": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "type": "image",
-      "src": "/assets/articles/inline/desinformacio-context.png",
-      "alt": "Fragments de paper que circulen cap a una lupa i unes pàgines ordenades en un centre tranquil.",
+      "src": "/assets/articles/inline/desinformacio-context-web.jpg",
+      "alt": "Una persona consulta una notícia en un telèfon mòbil davant d'una pantalla d'ordinador.",
       "caption": "Abans de compartir, encara podem aturar-nos i mirar el context.",
       "width": "large",
       "align": "center"

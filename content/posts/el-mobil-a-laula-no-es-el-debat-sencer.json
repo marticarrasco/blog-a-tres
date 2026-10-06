@@ -3,13 +3,13 @@
   "slug": "el-mobil-a-laula-no-es-el-debat-sencer",
   "author": "content/authors/jan-sarkar.json",
   "publishedAt": "2026-08-28",
-  "updatedAt": "2026-08-28",
+  "updatedAt": "2026-09-09",
   "status": "published",
   "featured": false,
   "featuredOrder": 5,
   "summary": "Parlar de pantalles a l'escola també és parlar d'atenció, criteri i desigualtat.",
-  "cover": "/assets/articles/covers/entre-linies.png",
-  "coverAlt": "Composició amb formes equilibrades que suggereix aprenentatge i concentració.",
+  "cover": "/assets/articles/inline/educacio-atencio-web.jpg",
+  "coverAlt": "Diversos estudiants miren els seus telèfons mòbils asseguts als pupitres d'una aula.",
   "lang": "ca",
   "blocks": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "type": "image",
-      "src": "/assets/articles/inline/educacio-atencio.png",
-      "alt": "Un telèfon cap per avall en un pupitre, al costat d'un quadern, un llapis i la llum d'una aula.",
+      "src": "/assets/articles/inline/educacio-atencio-web.jpg",
+      "alt": "Diversos estudiants miren els seus telèfons mòbils asseguts als pupitres d'una aula.",
       "caption": "Protegir l'atenció també és una manera d'aprendre a conviure amb la tecnologia.",
       "width": "large",
       "align": "center"

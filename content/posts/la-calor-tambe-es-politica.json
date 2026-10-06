@@ -3,13 +3,13 @@
   "slug": "la-calor-tambe-es-politica",
   "author": "content/authors/alejandro-pascual.json",
   "publishedAt": "2026-08-30",
-  "updatedAt": "2026-08-30",
+  "updatedAt": "2026-09-09",
   "status": "published",
   "featured": true,
   "featuredOrder": 3,
   "summary": "La calor no afecta tothom igual: també revela com planifiquem i protegim les ciutats.",
-  "cover": "/assets/articles/covers/entre-linies.png",
-  "coverAlt": "Composició abstracta amb colors càlids i frescos que evoca un estiu intens.",
+  "cover": "/assets/articles/inline/calor-ciutat-web.jpg",
+  "coverAlt": "Un carrer estret de Sevilla amb un contrast intens entre el sol i l'ombra.",
   "lang": "ca",
   "blocks": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "type": "image",
-      "src": "/assets/articles/inline/calor-ciutat.png",
-      "alt": "Un carrer urbà dividit entre una zona de formigó exposada al sol i una zona d'ombra amb arbres i un banc.",
+      "src": "/assets/articles/inline/calor-ciutat-web.jpg",
+      "alt": "Un carrer estret de Sevilla amb un contrast intens entre el sol i l'ombra.",
       "caption": "L'ombra, l'aigua i els espais públics també són infraestructura climàtica.",
       "width": "large",
       "align": "center"

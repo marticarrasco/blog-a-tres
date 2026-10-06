@@ -3,13 +3,13 @@
   "slug": "una-ciutat-que-es-mou-a-un-altre-ritme",
   "author": "content/authors/alejandro-pascual.json",
   "publishedAt": "2026-08-27",
-  "updatedAt": "2026-08-27",
+  "updatedAt": "2026-09-09",
   "status": "published",
   "featured": false,
   "featuredOrder": 6,
   "summary": "Repensar la mobilitat és decidir quina mena de vida volem fer possible als carrers.",
-  "cover": "/assets/articles/covers/entre-linies.png",
-  "coverAlt": "Tres formes connectades que evoquen desplaçaments i espai urbà compartit.",
+  "cover": "/assets/articles/inline/mobilitat-compartida-web.jpg",
+  "coverAlt": "Dues persones circulen en bicicleta per un carrer de París.",
   "lang": "ca",
   "blocks": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "type": "image",
-      "src": "/assets/articles/inline/mobilitat-compartida.png",
-      "alt": "Un carrer urbà amb una persona caminant, una bicicleta i una forma de transport públic compartint l'espai entre arbres.",
+      "src": "/assets/articles/inline/mobilitat-compartida-web.jpg",
+      "alt": "Dues persones circulen en bicicleta per un carrer de París.",
       "caption": "Una ciutat habitable ofereix més d'una manera de moure's.",
       "width": "large",
       "align": "center"

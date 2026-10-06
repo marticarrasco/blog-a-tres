@@ -3,13 +3,13 @@
   "slug": "la-intelligencia-artificial-no-pensa-per-nosaltres",
   "author": "content/authors/marti-carrasco.json",
   "publishedAt": "2026-09-01",
-  "updatedAt": "2026-09-01",
+  "updatedAt": "2026-09-09",
   "status": "published",
   "featured": true,
   "featuredOrder": 1,
   "summary": "La qüestió no és si utilitzarem IA, sinó què decidirem continuar pensant nosaltres.",
-  "cover": "/assets/articles/covers/entre-linies.png",
-  "coverAlt": "Formes orgàniques en verd, blau i terracota que representen idees en conversa.",
+  "cover": "/assets/articles/inline/ia-criteri-web.jpg",
+  "coverAlt": "Silueta d'un cap humà obert amb una xarxa lluminosa i les lletres AI a l'interior.",
   "lang": "ca",
   "blocks": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "type": "image",
-      "src": "/assets/articles/inline/ia-criteri.png",
-      "alt": "Quadern amb una pregunta manuscrita davant d'una xarxa abstracta d'intel·ligència artificial.",
+      "src": "/assets/articles/inline/ia-criteri-web.jpg",
+      "alt": "Silueta d'un cap humà obert amb una xarxa lluminosa i les lletres AI a l'interior.",
       "caption": "Una eina pot accelerar la resposta; el criteri continua sent nostre.",
       "width": "large",
       "align": "center"

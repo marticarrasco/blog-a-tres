@@ -4,6 +4,38 @@
   "handle": "marti-carrasco",
   "role": "Tecnologia, cultura i preguntes obertes",
   "bio": "M'agrada entendre com funcionen les coses i què passa quan les mirem des d'un altre lloc.",
+  "headline": "Escric per entendre què queda en mans nostres quan les eines canvien.",
+  "intro": "La tecnologia m'interessa menys com a col·lecció de novetats que com a manera de modificar els nostres gestos, les nostres expectatives i la forma com compartim el món. Escric des d'aquesta frontera: entre l'eina i l'ús que en fem, entre la velocitat d'una resposta i el temps que necessita el criteri.",
+  "about": [
+    "No em convenç gaire la idea que la tecnologia siga neutral ni la que la presenta com una força inevitable. Una eina pot facilitar-nos una tasca, però també pot canviar què considerem important, què deixem de mirar i quines decisions acabem delegant. Per això m'interessa parlar-ne amb una mica més de calma, separant la promesa del resultat i la novetat del valor real.",
+    "En els meus textos torne sovint a una mateixa preocupació: com conservar el criteri en un entorn que premia la immediatesa. La intel·ligència artificial, la desinformació i les plataformes digitals són cares diferents d'una mateixa conversa. No es tracta només de saber què pot fer una tecnologia, sinó de decidir què volem continuar fent nosaltres: preguntar, verificar, escoltar, interpretar i assumir la responsabilitat del que compartim.",
+    "També m'interessa la cultura perquè és el lloc on aquestes transformacions es fan visibles. Les eines no viuen fora de la societat: entren en les aules, en les converses, en la manera de treballar i en la forma com mirem els altres. Escriure és una manera d'aturar aquesta circulació ràpida, posar nom als canvis i veure quines preguntes encara no tenim resoltes."
+  ],
+  "topics": [
+    {
+      "title": "Intel·ligència artificial",
+      "text": "No només què pot generar una màquina, sinó què passa amb el judici humà quan una resposta arriba abans que la pregunta."
+    },
+    {
+      "title": "Criteri digital",
+      "text": "Com distingir informació, soroll i context en un ecosistema que ens demana reaccionar abans de comprovar."
+    },
+    {
+      "title": "Tecnologia i cultura",
+      "text": "Les formes en què les eines transformen els hàbits, les expectatives i les converses que tenim cada dia."
+    },
+    {
+      "title": "Preguntes obertes",
+      "text": "Idees que no necessiten un veredicte ràpid, sinó una mica més d'atenció, matís i capacitat de revisar-se."
+    }
+  ],
+  "principles": [
+    "Començar per una pregunta real, no per una conclusió que només busca confirmació.",
+    "Desconfiar de la velocitat quan es presenta com una prova de qualitat.",
+    "Separar el que una eina pot fer del que ens convé delegar-li.",
+    "Donar context abans de demanar una reacció.",
+    "Acceptar que canviar d'opinió també forma part d'entendre millor una idea."
+  ],
   "avatar": "",
   "links": []
 }
