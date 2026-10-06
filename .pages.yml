@@ -170,6 +170,18 @@ content:
       - name: handle
         label: Identificador
         type: string
+      - name: email
+        label: Correu de contacte
+        type: string
+        required: false
+      - name: linkedin
+        label: Perfil de LinkedIn
+        type: string
+        required: false
+      - name: twitter
+        label: Perfil de Twitter / X
+        type: string
+        required: false
       - name: role
         label: Frase curta
         type: string
@@ -180,6 +192,13 @@ content:
           format: markdown
       - name: avatar
         label: Fotografia
+        type: image
+        required: false
+        options:
+          media: articles
+          path: avatars
+      - name: profileBackground
+        label: Fons de la pàgina de l'autor
         type: image
         required: false
         options:

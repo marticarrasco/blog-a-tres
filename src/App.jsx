@@ -160,6 +160,14 @@ function AuthorInitial({ author }) {
   return <span className="author-initial" aria-hidden="true">{author.name.slice(0, 1)}</span>;
 }
 
+function AuthorSocialLinks({ author, className = "author-links", ariaLabel = `Xarxes de ${author.name}` }) {
+  return <nav className={className} aria-label={ariaLabel}>
+    {author.linkedin && <a href={author.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ExternalLink size={14} /></a>}
+    {author.twitter && <a href={author.twitter} target="_blank" rel="noopener noreferrer">Twitter / X<ExternalLink size={14} /></a>}
+    {author.links?.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}
+  </nav>;
+}
+
 function ArticleMeta({ post, navigate, linked = true }) {
   const author = <><AuthorMark author={post.author} />{post.author.name}</>;
   return <div className="article-meta">{linked ? <Link to={`/autors/${post.author.handle}`} navigate={navigate}>{author}</Link> : <span className="article-author-static">{author}</span>}<span>{formatDate(post.publishedAt)}</span></div>;
@@ -210,8 +218,28 @@ function AuthorsPage({ navigate }) {
 function AuthorPage({ author, navigate }) {
   if (!author) return <NotFound navigate={navigate} />;
   const authored = posts.filter((post) => post.author.id === author.id);
+  const isPersonalProfile = author.handle === "marti-carrasco";
   const isDetailedProfile = Boolean(author.headline || author.intro || author.about?.length || author.topics?.length || author.principles?.length);
-  return <main className={`page-shell author-detail${isDetailedProfile ? " author-detail-rich" : ""}`}><Seo title={author.name} description={author.headline || author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} /><Link className="back-link" to="/autors" navigate={navigate}><ChevronLeft size={16} />Autors</Link><header className="author-detail-header"><AuthorMark author={author} large /><div><p className="eyebrow">Una veu d'Entre línies</p><h1>{author.name}</h1><p>{author.role}</p></div></header>{isDetailedProfile && <><section className="author-introduction"><p className="author-headline">{author.headline}</p><p>{author.intro}</p></section><section className="author-story"><div className="author-story-label"><span>01</span><span>Des d'on escric</span></div><div className="author-story-copy">{author.about?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section><section className="author-topics"><div className="section-heading"><div><p className="eyebrow">Quatre fils que es repeteixen</p><h2>Temes que em fan preguntes</h2></div></div><div className="author-topic-grid">{author.topics?.map((topic, index) => <article className="author-topic" key={topic.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{topic.title}</h3><p>{topic.text}</p></article>)}</div></section><section className="author-method"><div className="author-method-heading"><p className="eyebrow">Una manera de treballar</p><h2>Abans de publicar, intento...</h2></div><ol>{author.principles?.map((principle) => <li key={principle}>{principle}</li>)}</ol></section></>}<section className="section-block author-writing"><div className="section-heading"><div><p className="eyebrow">Textos publicats</p><h2>{authored.length ? "Articles de Martí" : "Encara no hi ha articles"}</h2></div></div><div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section>{author.links?.length > 0 && <nav className="author-links" aria-label={`Enllaços de ${author.name}`}>{author.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}</nav>}</main>;
+  if (isPersonalProfile) return <main className="author-detail author-detail-personal">
+    <Seo title={author.name} description={author.about?.[0] || author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} />
+    <header className="author-personal-hero" style={{ "--profile-background": `url("${author.profileBackground || ""}")` }}>
+      <img className="author-personal-photo" src={author.avatar} alt={`Retrat de ${author.name}`} />
+      <div className="author-personal-heading"><h1>{author.name}</h1><AuthorSocialLinks author={author} className="author-personal-socials" ariaLabel={`Xarxes de ${author.name} a la capçalera`} /></div>
+    </header>
+    {authored.length > 0 && <section className="author-publications-preview section-shell" aria-labelledby="author-publications-preview-heading">
+      <div className="section-heading"><h2 id="author-publications-preview-heading">Articles publicats</h2><a className="quiet-link" href="#author-all-articles">Veure’ls tots <ArrowUpRight size={15} /></a></div>
+      <div className="author-preview-row">{authored.slice(0, 3).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div>
+    </section>}
+    <div className="author-personal-content section-shell">
+      <article className="author-personal-copy">{author.about?.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</article>
+      <AuthorSocialLinks author={author} />
+      <section id="author-all-articles" className="author-writing author-personal-writing" aria-labelledby="author-all-articles-heading">
+        <div className="section-heading"><div><p className="eyebrow">Textos publicats</p><h2 id="author-all-articles-heading">Tots els articles de {author.name}</h2></div></div>
+        {authored.length > 0 ? <div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div> : <p>Encara no hi ha articles publicats.</p>}
+      </section>
+    </div>
+  </main>;
+  return <main className={`page-shell author-detail${isDetailedProfile ? " author-detail-rich" : ""}`}><Seo title={author.name} description={author.headline || author.role} path={`/autors/${author.handle}`} image={author.avatar || "/og.png"} /><header className="author-detail-header"><AuthorMark author={author} large /><div><p className="eyebrow">Una veu d'Entre línies</p><h1>{author.name}</h1><p>{author.role}</p></div></header>{isDetailedProfile && <><section className="author-introduction"><p className="author-headline">{author.headline}</p><p>{author.intro}</p></section><section className="author-story"><div className="author-story-label"><span>01</span><span>Des d'on escric</span></div><div className="author-story-copy">{author.about?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></section><section className="author-topics"><div className="section-heading"><div><p className="eyebrow">Quatre fils que es repeteixen</p><h2>Temes que em fan preguntes</h2></div></div><div className="author-topic-grid">{author.topics?.map((topic, index) => <article className="author-topic" key={topic.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{topic.title}</h3><p>{topic.text}</p></article>)}</div></section><section className="author-method"><div className="author-method-heading"><p className="eyebrow">Una manera de treballar</p><h2>Abans de publicar, intento...</h2></div><ol>{author.principles?.map((principle) => <li key={principle}>{principle}</li>)}</ol></section></>}<section className="section-block author-writing"><div className="section-heading"><div><p className="eyebrow">Textos publicats</p><h2>{authored.length ? "Articles de Martí" : "Encara no hi ha articles"}</h2></div></div><div className="article-grid author-articles">{authored.map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section>{author.links?.length > 0 && <nav className="author-links" aria-label={`Enllaços de ${author.name}`}>{author.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={14} /></a>)}</nav>}</main>;
 }
 
 function ManifestPage() { return <main className="manifest-page-modern"><Seo title="Manifest" description="El manifest editorial d'Entre línies: escriure per entendre millor." path="/manifest" /><div className="manifest-page-inner"><article><p className="manifest-label">Manifest Editorial</p><h1>Una mica de context</h1><div className="manifest-page-divider" /><div className="manifest-long"><Markdown>{site.manifest}</Markdown></div></article></div></main>; }
@@ -260,7 +288,25 @@ function LegalPage({ path }) { const [label, title, body] = legalPages[path]; re
 function NotFound({ navigate }) { return <main className="page-shell not-found"><Seo title="Pàgina no trobada" description="Aquesta pàgina no existeix o ja no és pública." path={window.location.pathname} /><p className="eyebrow">Error 404</p><h1>Aquesta línia<br /><em>no porta enlloc.</em></h1><p>La pàgina no existeix, ha canviat d’adreça o ja no és pública.</p><Link className="text-button" to="/" navigate={navigate}>Tornar a l’inici <ArrowUpRight size={15} /></Link></main>; }
 
 function Footer({ navigate }) {
-  return <footer className="site-footer"><div><Link className="footer-logo-link" to="/" navigate={navigate} aria-label="Entre línies, inici"><img className="brand-logo brand-logo-footer" src="/assets/brand/entre-linies-logo.png" alt="" loading="lazy" decoding="async" /></Link></div><nav className="footer-links" aria-label="Informació del projecte"><Link to="/manifest" navigate={navigate}>Manifest</Link><Link to="/privacitat" navigate={navigate}>Privacitat</Link><Link to="/comentaris" navigate={navigate}>Comentaris</Link><Link to="/contacte" navigate={navigate}>Contacte</Link><Link to="/avis-legal" navigate={navigate}>Avís legal</Link></nav><small>© 2026</small></footer>;
+  return <footer className="site-footer">
+    <div className="footer-top">
+      <Link className="footer-logo-link" to="/" navigate={navigate} aria-label="Entre línies, inici"><img className="brand-logo brand-logo-footer" src="/assets/brand/entre-linies-logo.png" alt="" loading="lazy" decoding="async" /></Link>
+      <nav className="footer-links" aria-label="Informació del projecte"><Link to="/manifest" navigate={navigate}>Manifest</Link><Link to="/privacitat" navigate={navigate}>Privacitat</Link><Link to="/comentaris" navigate={navigate}>Comentaris</Link><Link to="/contacte" navigate={navigate}>Contacte</Link><Link to="/avis-legal" navigate={navigate}>Avís legal</Link></nav>
+    </div>
+    <section className="footer-voices" aria-labelledby="footer-voices-heading">
+      <h2 id="footer-voices-heading">Les tres veus</h2>
+      <div className="footer-people">{authors.map((author) => <address className="footer-person" key={author.id}>
+        <strong>{author.name}</strong>
+        {author.email ? <a href={`mailto:${author.email}`}>{author.email}</a> : <span className="footer-placeholder">Correu pendent d'afegir</span>}
+        <div className="footer-socials">
+          {author.linkedin ? <a href={author.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn<ExternalLink size={13} /></a> : <span className="footer-placeholder">LinkedIn pendent</span>}
+          {author.twitter ? <a href={author.twitter} target="_blank" rel="noopener noreferrer">Twitter / X<ExternalLink size={13} /></a> : <span className="footer-placeholder">Twitter / X pendent</span>}
+          {author.links?.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer">{link.label}<ExternalLink size={13} /></a>)}
+        </div>
+      </address>)}</div>
+    </section>
+    <div className="footer-bottom"><small>© 2026</small></div>
+  </footer>;
 }
 
 export default function App() {
