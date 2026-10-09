@@ -48,11 +48,8 @@ content:
       - name: featured
         label: Article destacat
         type: boolean
+        description: "Marca els articles insígnia de l'autor seleccionat. Convenció editorial: cada autor destaca els articles que té atribuïts; els tres editors poden continuar gestionant tots els articles."
         default: false
-      - name: featuredOrder
-        label: Ordre del destacat
-        type: number
-        required: false
       - name: summary
         label: Resum
         type: text

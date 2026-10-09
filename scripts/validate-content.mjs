@@ -45,6 +45,7 @@ for (const [name, post] of posts) {
   if (slugs.has(post.slug)) errors.push(`${prefix}: slug duplicat.`);
   slugs.add(post.slug);
   if (!["draft", "published", "archived"].includes(post.status)) errors.push(`${prefix}: estat desconegut.`);
+  if (post.featured !== undefined && typeof post.featured !== "boolean") errors.push(`${prefix}: featured ha de ser booleà.`);
   if (!authorRefs.has(String(post.author).replace(/^\.\.\//, ""))) errors.push(`${prefix}: autor inexistent (${post.author}).`);
   if (Number.isNaN(Date.parse(post.publishedAt)) || Number.isNaN(Date.parse(post.updatedAt))) errors.push(`${prefix}: data no vàlida.`);
   if (new Date(post.updatedAt) < new Date(post.publishedAt)) warnings.push(`${prefix}: updatedAt és anterior a publishedAt.`);

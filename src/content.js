@@ -27,15 +27,25 @@ export function resolveAuthor(reference) {
 
 function normalisePost(post, path) {
   const slug = post.slug || fileStem(path);
-  return { ...post, id: slug, slug, author: resolveAuthor(post.author), blocks: Array.isArray(post.blocks) ? post.blocks : [] };
+  return { ...post, id: slug, slug, featured: post.featured === true, author: resolveAuthor(post.author), blocks: Array.isArray(post.blocks) ? post.blocks : [] };
 }
 
 export const allPosts = Object.entries(postFiles).map(([path, post]) => normalisePost(post, path));
 export const posts = allPosts
   .filter((post) => post.status === "published" && post.author)
   .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-export const featuredPosts = posts
-  .filter((post) => post.featured)
-  .sort((a, b) => (a.featuredOrder ?? 999) - (b.featuredOrder ?? 999));
+
+export function sortPostsForDiscovery(items, field = "publishedAt", direction = "desc") {
+  const multiplier = direction === "asc" ? 1 : -1;
+  return [...items].sort((a, b) => {
+    const featuredFirst = Number(b.featured) - Number(a.featured);
+    if (featuredFirst) return featuredFirst;
+    const selectedDate = (new Date(a[field]).getTime() - new Date(b[field]).getTime()) * multiplier;
+    if (selectedDate) return selectedDate;
+    return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+  });
+}
+
+export const featuredPosts = sortPostsForDiscovery(posts.filter((post) => post.featured));
 
 export { site };
