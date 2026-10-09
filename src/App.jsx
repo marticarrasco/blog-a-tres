@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronDown, ChevronLeft, ExternalLink, Menu, MessageCircle, Share2, Tags, X } from "lucide-react";
 import Markdown from "./components/Markdown.jsx";
 import Comments from "./components/Comments.jsx";
@@ -179,6 +179,95 @@ function ArticleCard({ post, navigate, featured = false, showType = false }) {
   return <article ref={ref} className={`${featured ? "article-card article-card-featured" : "article-card"} voice-${post.author.order} reveal-item ${visible ? "is-visible" : ""}`}><Link to={`/articles/${post.slug}`} navigate={navigate}><div className="article-card-copy"><ArticleMeta post={post} navigate={navigate} linked={false} />{showType && articleType && <span className="article-type-badge">{articleType.label}</span>}<h3>{post.title}</h3><p>{post.summary}</p></div><Cover post={post} compact={!featured} priority={featured} /><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></Link></article>;
 }
 
+function FilterSelect({ label, ariaLabel = label, value, options, onChange, icon: Icon }) {
+  const [open, setOpen] = useState(false);
+  const selectedIndex = Math.max(0, options.findIndex((option) => option.value === value));
+  const [activeIndex, setActiveIndex] = useState(selectedIndex);
+  const id = useId();
+  const rootRef = useRef(null);
+  const triggerRef = useRef(null);
+  const optionRefs = useRef([]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const closeOnOutsideClick = (event) => {
+      if (!rootRef.current?.contains(event.target)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, [open]);
+
+  const focusOption = (index) => {
+    const next = (index + options.length) % options.length;
+    setActiveIndex(next);
+    optionRefs.current[next]?.focus();
+  };
+
+  const showMenu = (index = selectedIndex) => {
+    const next = Math.max(0, Math.min(options.length - 1, index));
+    setActiveIndex(next);
+    setOpen(true);
+    requestAnimationFrame(() => optionRefs.current[next]?.focus());
+  };
+
+  const closeMenu = (restoreFocus = true) => {
+    setOpen(false);
+    if (restoreFocus) requestAnimationFrame(() => triggerRef.current?.focus());
+  };
+
+  return <div ref={rootRef} className={`filter-select${open ? " is-open" : ""}`}>
+    <button
+      ref={triggerRef}
+      className="filter-select-trigger"
+      type="button"
+      aria-label={ariaLabel}
+      aria-haspopup="listbox"
+      aria-expanded={open}
+      aria-controls={open ? id : undefined}
+      onClick={() => open ? closeMenu(false) : showMenu()}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          showMenu(event.key === "ArrowUp" ? selectedIndex - 1 : selectedIndex);
+        }
+      }}
+    >
+      <Icon size={15} aria-hidden="true" />
+      <span className="filter-control-caption">{label}</span>
+      <span className="filter-select-value">{options[selectedIndex]?.label}</span>
+      <ChevronDown className="filter-control-chevron" size={14} aria-hidden="true" />
+    </button>
+    {open && <div id={id} className="filter-select-menu" role="listbox" aria-label={ariaLabel}>
+      {options.map((option, index) => {
+        const selected = option.value === value;
+        return <button
+          key={option.value}
+          ref={(node) => { optionRefs.current[index] = node; }}
+          id={`${id}-option-${index}`}
+          className="filter-select-option"
+          type="button"
+          role="option"
+          tabIndex={activeIndex === index ? 0 : -1}
+          aria-selected={selected}
+          onFocus={() => setActiveIndex(index)}
+          onClick={() => { onChange(option.value); closeMenu(); }}
+          onKeyDown={(event) => {
+            if (event.key === "ArrowDown") { event.preventDefault(); focusOption(index + 1); }
+            else if (event.key === "ArrowUp") { event.preventDefault(); focusOption(index - 1); }
+            else if (event.key === "Home") { event.preventDefault(); focusOption(0); }
+            else if (event.key === "End") { event.preventDefault(); focusOption(options.length - 1); }
+            else if (event.key === "Escape") { event.preventDefault(); closeMenu(); }
+            else if (event.key === "Tab") closeMenu(false);
+          }}
+        >
+          <span>{option.label}</span>
+          {selected && <Check size={14} aria-hidden="true" />}
+        </button>;
+      })}
+    </div>}
+  </div>;
+}
+
 function Manifest({ navigate }) {
   const [ref, visible] = useReveal();
   const preview = site.manifest.split("\n\n").slice(0, 3).join("\n\n");
@@ -207,27 +296,26 @@ function ArticlesExplorer({ navigate, heading = true }) {
         {authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}
       </div>
       <div className="filter-controls">
-        <label className="filter-select">
-          <Tags size={15} aria-hidden="true" />
-          <span className="filter-control-caption">Tipus</span>
-          <span className="sr-only">Filtrar per tipus d'article</span>
-          <select value={selectedType} onChange={(event) => setSelectedType(event.target.value)}>
-            <option value="">Tots els tipus</option>
-            {articleTypes.map((type) => <option key={type.value} value={type.value}>{type.label}</option>)}
-          </select>
-          <ChevronDown className="filter-control-chevron" size={14} aria-hidden="true" />
-        </label>
-        <label className="sort-select">
-          {order.endsWith("desc") ? <ArrowDown size={15} aria-hidden="true" /> : <ArrowUp size={15} aria-hidden="true" />}
-          <span className="filter-control-caption">Ordena</span>
-          <span className="sr-only">Ordenar articles</span>
-          <select value={order} onChange={(event) => setOrder(event.target.value)}>
-            <option value="published-desc">Més recents</option>
-            <option value="published-asc">Més antics</option>
-            <option value="updated-desc">Actualitzats</option>
-          </select>
-          <ChevronDown className="filter-control-chevron" size={14} aria-hidden="true" />
-        </label>
+        <FilterSelect
+          label="Tipus"
+          ariaLabel="Filtrar per tipus d'article"
+          value={selectedType}
+          options={[{ value: "", label: "Tots els tipus" }, ...articleTypes]}
+          onChange={setSelectedType}
+          icon={Tags}
+        />
+        <FilterSelect
+          label="Ordena"
+          ariaLabel="Ordenar articles"
+          value={order}
+          options={[
+            { value: "published-desc", label: "Més recents" },
+            { value: "published-asc", label: "Més antics" },
+            { value: "updated-desc", label: "Actualitzats" },
+          ]}
+          onChange={setOrder}
+          icon={order.endsWith("desc") ? ArrowDown : ArrowUp}
+        />
       </div>
     </div>
     {filtered.length > 0 ? <div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} showType />)}</div> : <div className="filter-empty" aria-live="polite"><p>No hi ha articles amb aquests filtres.</p><button className="text-button" type="button" onClick={clearFilters}>Esborra els filtres</button></div>}

@@ -106,14 +106,20 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .filter-pills button { display: inline-flex; align-items: center; gap: .3rem; padding: .5rem .8rem; border: 1px solid var(--line); border-radius: 99px; background: #fff; color: var(--muted); font-size: .72rem; }
 .filter-pills button:hover, .filter-pills button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
 .filter-controls { display: flex; align-items: center; gap: .55rem; }
-.filter-select, .sort-select { position: relative; display: flex; min-height: 42px; align-items: center; gap: .48rem; padding: .35rem 2.05rem .35rem .75rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); transition: border-color .18s, background .18s, box-shadow .18s; }
-.filter-select:hover, .sort-select:hover { border-color: var(--ink); background: #fff; }
-.filter-select:focus-within, .sort-select:focus-within { border-color: var(--ink); background: #fff; box-shadow: 0 0 0 3px rgba(41,39,36,.1); }
-.filter-select > svg:first-child, .sort-select > svg:first-child { flex: 0 0 auto; }
+.filter-select { position: relative; flex: 0 0 auto; }
+.filter-select-trigger { display: flex; min-height: 44px; align-items: center; gap: .5rem; padding: .45rem 2.05rem .45rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); text-align: left; transition: border-color .18s, background .18s, box-shadow .18s; }
+.filter-select-trigger:hover, .filter-select.is-open .filter-select-trigger { border-color: var(--ink); background: #fff; }
+.filter-select:focus-within .filter-select-trigger { border-color: var(--ink); background: #fff; box-shadow: 0 0 0 3px rgba(41,39,36,.1); }
+.filter-select-trigger > svg:first-child { flex: 0 0 auto; }
 .filter-control-caption { color: var(--muted); font: 500 .59rem/1 'IBM Plex Mono', monospace; letter-spacing: .045em; text-transform: uppercase; }
-.filter-select select, .sort-select select { min-width: 0; max-width: 12rem; appearance: none; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: .73rem; font-weight: 600; cursor: pointer; }
-.filter-select select { max-width: 9rem; }
-.filter-control-chevron { position: absolute; right: .7rem; pointer-events: none; }
+.filter-select-value { color: var(--ink); font-size: .73rem; font-weight: 600; white-space: nowrap; }
+.filter-control-chevron { position: absolute; top: 50%; right: .7rem; pointer-events: none; transform: translateY(-50%); transition: transform .18s; }
+.filter-select.is-open .filter-control-chevron { transform: translateY(-50%) rotate(180deg); }
+.filter-select-menu { position: absolute; top: calc(100% + .45rem); right: 0; z-index: 30; width: max-content; min-width: 100%; max-width: min(18rem, calc(100vw - 2rem)); padding: .38rem; border: 1px solid var(--line); border-radius: 14px; background: #fff; box-shadow: 0 14px 34px rgba(41,39,36,.16), 0 2px 8px rgba(41,39,36,.06); }
+.filter-select-option { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .62rem .72rem; border: 0; border-radius: 9px; background: transparent; color: var(--ink); font-size: .76rem; text-align: left; white-space: nowrap; }
+.filter-select-option:hover, .filter-select-option:focus-visible { outline: 0; background: var(--paper); }
+.filter-select-option[aria-selected="true"] { color: #9c562b; font-weight: 700; }
+.filter-select-option[aria-selected="true"] svg { color: var(--orange); }
 .filter-empty { padding: 2rem 0; color: var(--muted); }
 .filter-empty p { margin: 0 0 .75rem; }
 .filter-empty .text-button { padding: 0; }
@@ -283,8 +289,10 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
   .author-tile, .author-profile { min-height: 390px; }
   .filters { align-items: flex-start; flex-direction: column; margin-bottom: 2rem; }
   .filter-controls { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
-  .filter-select, .sort-select { flex: 1 1 145px; justify-content: flex-start; }
-  .filter-select select, .sort-select select { flex: 1; max-width: none; }
+  .filter-select { flex: 1 1 145px; }
+  .filter-select-trigger { width: 100%; }
+  .filter-select-value { overflow: hidden; text-overflow: ellipsis; }
+  .filter-select-menu { right: auto; left: 0; }
   .simple-page-heading { margin-bottom: 4rem; }
   .simple-page-heading h1 { font-size: clamp(4.5rem, 22vw, 7rem); }
   .author-detail-header { display: block; }
