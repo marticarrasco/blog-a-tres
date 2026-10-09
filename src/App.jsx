@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronLeft, ExternalLink, Menu, MessageCircle, Share2, X } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronDown, ChevronLeft, ExternalLink, Menu, MessageCircle, Share2, Tags, X } from "lucide-react";
 import Markdown from "./components/Markdown.jsx";
 import Comments from "./components/Comments.jsx";
 import Seo from "./components/Seo.jsx";
@@ -173,9 +173,10 @@ function ArticleMeta({ post, navigate, linked = true }) {
   return <div className="article-meta">{linked ? <Link to={`/autors/${post.author.handle}`} navigate={navigate}>{author}</Link> : <span className="article-author-static">{author}</span>}<span>{formatDate(post.publishedAt)}</span></div>;
 }
 
-function ArticleCard({ post, navigate, featured = false }) {
+function ArticleCard({ post, navigate, featured = false, showType = false }) {
   const [ref, visible] = useReveal();
-  return <article ref={ref} className={`${featured ? "article-card article-card-featured" : "article-card"} voice-${post.author.order} reveal-item ${visible ? "is-visible" : ""}`}><Link to={`/articles/${post.slug}`} navigate={navigate}><div className="article-card-copy"><ArticleMeta post={post} navigate={navigate} linked={false} /><h3>{post.title}</h3><p>{post.summary}</p></div><Cover post={post} compact={!featured} priority={featured} /><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></Link></article>;
+  const articleType = articleTypes.find((type) => type.value === post.articleType);
+  return <article ref={ref} className={`${featured ? "article-card article-card-featured" : "article-card"} voice-${post.author.order} reveal-item ${visible ? "is-visible" : ""}`}><Link to={`/articles/${post.slug}`} navigate={navigate}><div className="article-card-copy"><ArticleMeta post={post} navigate={navigate} linked={false} />{showType && articleType && <span className="article-type-badge">{articleType.label}</span>}<h3>{post.title}</h3><p>{post.summary}</p></div><Cover post={post} compact={!featured} priority={featured} /><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></Link></article>;
 }
 
 function Manifest({ navigate }) {
@@ -198,7 +199,39 @@ function ArticlesExplorer({ navigate, heading = true }) {
   const field = order.startsWith("updated") ? "updatedAt" : "publishedAt";
   const direction = order.endsWith("desc") ? "desc" : "asc";
   const filtered = sortPostsForDiscovery(posts.filter((post) => (selected.length === 0 || selected.includes(post.author.id)) && (!selectedType || post.articleType === selectedType)), field, direction);
-  return <section className={heading ? "articles-explorer" : "section-shell section-block articles-home"}>{!heading && <div className="section-heading"><h2>Articles</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure tots <ArrowUpRight size={15} /></Link></div>}<div className="filters" aria-label="Filtres d'articles"><div className="filter-pills"><button className={selected.length === 0 && !selectedType ? "active" : ""} onClick={clearFilters} type="button">Tots</button>{authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}</div><div className="filter-controls"><label className="filter-select"><span className="sr-only">Filtrar per tipus d'article</span><select value={selectedType} onChange={(event) => setSelectedType(event.target.value)}><option value="">Tots els tipus</option>{articleTypes.map((type) => <option key={type.value} value={type.value}>{type.label}</option>)}</select></label><label className="sort-select">{order.endsWith("desc") ? <ArrowDown size={15} /> : <ArrowUp size={15} />}<span className="sr-only">Ordenar articles</span><select value={order} onChange={(event) => setOrder(event.target.value)}><option value="published-desc">Més recents</option><option value="published-asc">Més antics</option><option value="updated-desc">Actualitzats</option></select></label></div></div>{filtered.length > 0 ? <div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div> : <div className="filter-empty" aria-live="polite"><p>No hi ha articles amb aquests filtres.</p><button className="text-button" type="button" onClick={clearFilters}>Esborra els filtres</button></div>}</section>;
+  return <section className={heading ? "articles-explorer" : "section-shell section-block articles-home"}>
+    {!heading && <div className="section-heading"><h2>Articles</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure tots <ArrowUpRight size={15} /></Link></div>}
+    <div className="filters" aria-label="Filtres d'articles">
+      <div className="filter-pills">
+        <button className={selected.length === 0 && !selectedType ? "active" : ""} onClick={clearFilters} type="button">Tots</button>
+        {authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}
+      </div>
+      <div className="filter-controls">
+        <label className="filter-select">
+          <Tags size={15} aria-hidden="true" />
+          <span className="filter-control-caption">Tipus</span>
+          <span className="sr-only">Filtrar per tipus d'article</span>
+          <select value={selectedType} onChange={(event) => setSelectedType(event.target.value)}>
+            <option value="">Tots els tipus</option>
+            {articleTypes.map((type) => <option key={type.value} value={type.value}>{type.label}</option>)}
+          </select>
+          <ChevronDown className="filter-control-chevron" size={14} aria-hidden="true" />
+        </label>
+        <label className="sort-select">
+          {order.endsWith("desc") ? <ArrowDown size={15} aria-hidden="true" /> : <ArrowUp size={15} aria-hidden="true" />}
+          <span className="filter-control-caption">Ordena</span>
+          <span className="sr-only">Ordenar articles</span>
+          <select value={order} onChange={(event) => setOrder(event.target.value)}>
+            <option value="published-desc">Més recents</option>
+            <option value="published-asc">Més antics</option>
+            <option value="updated-desc">Actualitzats</option>
+          </select>
+          <ChevronDown className="filter-control-chevron" size={14} aria-hidden="true" />
+        </label>
+      </div>
+    </div>
+    {filtered.length > 0 ? <div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} showType />)}</div> : <div className="filter-empty" aria-live="polite"><p>No hi ha articles amb aquests filtres.</p><button className="text-button" type="button" onClick={clearFilters}>Esborra els filtres</button></div>}
+  </section>;
 }
 
 function Home({ navigate }) {
