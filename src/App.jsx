@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronLeft, ExternalLink, Men
 import Markdown from "./components/Markdown.jsx";
 import Comments from "./components/Comments.jsx";
 import Seo from "./components/Seo.jsx";
-import { authors, featuredPosts, posts, resolveAuthor, site, sortPostsForDiscovery } from "./content.js";
+import { articleTypes, authors, featuredPosts, posts, resolveAuthor, site, sortPostsForDiscovery } from "./content.js";
 
 const descriptions = {
   home: "Un espai compartit per escriure, discutir i entendre millor les idees.",
@@ -191,12 +191,14 @@ function AuthorHighlights({ navigate }) {
 
 function ArticlesExplorer({ navigate, heading = true }) {
   const [selected, setSelected] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
   const [order, setOrder] = useState("published-desc");
   const toggle = (id) => setSelected((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  const clearFilters = () => { setSelected([]); setSelectedType(""); };
   const field = order.startsWith("updated") ? "updatedAt" : "publishedAt";
   const direction = order.endsWith("desc") ? "desc" : "asc";
-  const filtered = sortPostsForDiscovery(posts.filter((post) => selected.length === 0 || selected.includes(post.author.id)), field, direction);
-  return <section className={heading ? "articles-explorer" : "section-shell section-block articles-home"}>{!heading && <div className="section-heading"><h2>Articles</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure tots <ArrowUpRight size={15} /></Link></div>}<div className="filters" aria-label="Filtres d'articles"><div className="filter-pills"><button className={selected.length === 0 ? "active" : ""} onClick={() => setSelected([])} type="button">Tots</button>{authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}</div><label className="sort-select">{order.endsWith("desc") ? <ArrowDown size={15} /> : <ArrowUp size={15} />}<span className="sr-only">Ordenar articles</span><select value={order} onChange={(event) => setOrder(event.target.value)}><option value="published-desc">Més recents</option><option value="published-asc">Més antics</option><option value="updated-desc">Actualitzats</option></select></label></div><div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section>;
+  const filtered = sortPostsForDiscovery(posts.filter((post) => (selected.length === 0 || selected.includes(post.author.id)) && (!selectedType || post.articleType === selectedType)), field, direction);
+  return <section className={heading ? "articles-explorer" : "section-shell section-block articles-home"}>{!heading && <div className="section-heading"><h2>Articles</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure tots <ArrowUpRight size={15} /></Link></div>}<div className="filters" aria-label="Filtres d'articles"><div className="filter-pills"><button className={selected.length === 0 && !selectedType ? "active" : ""} onClick={clearFilters} type="button">Tots</button>{authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}</div><div className="filter-controls"><label className="filter-select"><span className="sr-only">Filtrar per tipus d'article</span><select value={selectedType} onChange={(event) => setSelectedType(event.target.value)}><option value="">Tots els tipus</option>{articleTypes.map((type) => <option key={type.value} value={type.value}>{type.label}</option>)}</select></label><label className="sort-select">{order.endsWith("desc") ? <ArrowDown size={15} /> : <ArrowUp size={15} />}<span className="sr-only">Ordenar articles</span><select value={order} onChange={(event) => setOrder(event.target.value)}><option value="published-desc">Més recents</option><option value="published-asc">Més antics</option><option value="updated-desc">Actualitzats</option></select></label></div></div>{filtered.length > 0 ? <div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div> : <div className="filter-empty" aria-live="polite"><p>No hi ha articles amb aquests filtres.</p><button className="text-button" type="button" onClick={clearFilters}>Esborra els filtres</button></div>}</section>;
 }
 
 function Home({ navigate }) {

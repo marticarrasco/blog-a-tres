@@ -103,6 +103,12 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .filter-pills { display: flex; flex-wrap: wrap; gap: .45rem; }
 .filter-pills button { display: inline-flex; align-items: center; gap: .3rem; padding: .5rem .8rem; border: 1px solid var(--line); border-radius: 99px; background: #fff; color: var(--muted); font-size: .72rem; }
 .filter-pills button:hover, .filter-pills button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
+.filter-controls { display: flex; align-items: center; gap: 1rem; }
+.filter-select { display: flex; align-items: center; color: var(--muted); }
+.filter-select select { max-width: 100%; padding: .45rem 1.8rem .45rem .55rem; border: 1px solid var(--line); border-radius: 99px; background: #fff; color: var(--ink); font-size: .72rem; }
+.filter-empty { padding: 2rem 0; color: var(--muted); }
+.filter-empty p { margin: 0 0 .75rem; }
+.filter-empty .text-button { padding: 0; }
 .sort-select { display: flex; align-items: center; gap: .35rem; color: var(--muted); }
 .sort-select select { border: 0; background: #fff; color: var(--muted); font-size: .72rem; }
 
@@ -270,7 +276,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
   .cover, .article-card-featured .cover { height: 78vw; max-height: 420px; }
   .author-tile, .author-profile { min-height: 390px; }
   .filters { align-items: flex-start; flex-direction: column; margin-bottom: 2rem; }
-  .sort-select { align-self: flex-end; }
+  .filter-controls { width: 100%; justify-content: flex-end; flex-wrap: wrap; }
   .simple-page-heading { margin-bottom: 4rem; }
   .simple-page-heading h1 { font-size: clamp(4.5rem, 22vw, 7rem); }
   .author-detail-header { display: block; }

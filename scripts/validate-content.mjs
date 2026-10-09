@@ -14,6 +14,7 @@ const slugs = new Set();
 const referencedAssets = new Set();
 const allowedImages = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 const allowedServices = new Set(["youtube", "twitter", "instagram", "webpage"]);
+const allowedArticleTypes = new Set(["opinio", "actualitat", "reflexio", "divulgacio", "experiencia", "dialeg"]);
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function checkImage(value, label, required = false) {
@@ -46,6 +47,7 @@ for (const [name, post] of posts) {
   slugs.add(post.slug);
   if (!["draft", "published", "archived"].includes(post.status)) errors.push(`${prefix}: estat desconegut.`);
   if (post.featured !== undefined && typeof post.featured !== "boolean") errors.push(`${prefix}: featured ha de ser booleà.`);
+  if (post.articleType !== undefined && !allowedArticleTypes.has(post.articleType)) errors.push(`${prefix}: tipus d'article desconegut (${post.articleType}).`);
   if (!authorRefs.has(String(post.author).replace(/^\.\.\//, ""))) errors.push(`${prefix}: autor inexistent (${post.author}).`);
   if (Number.isNaN(Date.parse(post.publishedAt)) || Number.isNaN(Date.parse(post.updatedAt))) errors.push(`${prefix}: data no vàlida.`);
   if (new Date(post.updatedAt) < new Date(post.publishedAt)) warnings.push(`${prefix}: updatedAt és anterior a publishedAt.`);
