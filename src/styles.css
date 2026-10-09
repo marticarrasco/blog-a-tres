@@ -107,7 +107,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .filter-pills button:hover, .filter-pills button.active { border-color: var(--ink); background: var(--ink); color: #fff; }
 .filter-controls { display: flex; align-items: center; gap: .55rem; }
 .filter-select { position: relative; flex: 0 0 auto; }
-.filter-select-trigger { display: flex; min-height: 44px; align-items: center; gap: .5rem; padding: .45rem 2.05rem .45rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); text-align: left; transition: border-color .18s, background .18s, box-shadow .18s; }
+.filter-select-trigger { display: flex; min-height: 32px; align-items: center; gap: .5rem; padding: .35rem 2.05rem .35rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.72); color: var(--muted); text-align: left; transition: border-color .18s, background .18s, box-shadow .18s; }
 .filter-select-trigger:hover, .filter-select.is-open .filter-select-trigger { border-color: var(--ink); background: #fff; }
 .filter-select:focus-within .filter-select-trigger { border-color: var(--ink); background: #fff; box-shadow: 0 0 0 3px rgba(41,39,36,.1); }
 .filter-select-trigger > svg:first-child { flex: 0 0 auto; }
