@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUp, ArrowUpRight, Check, ChevronLeft, ExternalLink, Men
 import Markdown from "./components/Markdown.jsx";
 import Comments from "./components/Comments.jsx";
 import Seo from "./components/Seo.jsx";
-import { authors, featuredPosts, posts, resolveAuthor, site } from "./content.js";
+import { authors, featuredPosts, posts, resolveAuthor, site, sortPostsForDiscovery } from "./content.js";
 
 const descriptions = {
   home: "Un espai compartit per escriure, discutir i entendre millor les idees.",
@@ -141,7 +141,7 @@ function Header({ navigate, path }) {
 }
 
 function Cover({ post, compact = false, priority = false }) {
-  return <div className={`cover ${compact ? "cover-compact" : ""}`}>{post.cover ? <img src={post.cover} alt={post.coverAlt || `Portada de l'article «${post.title}»`} loading={priority ? "eager" : "lazy"} decoding="async" /> : <><span className="cover-number">{String(post.featuredOrder || 1).padStart(2, "0")}</span><span className="cover-word">pensar<br />junts</span></>}</div>;
+  return <div className={`cover ${compact ? "cover-compact" : ""}`}>{post.cover ? <img src={post.cover} alt={post.coverAlt || `Portada de l'article «${post.title}»`} loading={priority ? "eager" : "lazy"} decoding="async" /> : <><span className="cover-number">01</span><span className="cover-word">pensar<br />junts</span></>}</div>;
 }
 
 function AuthorMark({ author, large = false }) {
@@ -175,7 +175,7 @@ function ArticleMeta({ post, navigate, linked = true }) {
 
 function ArticleCard({ post, navigate, featured = false }) {
   const [ref, visible] = useReveal();
-  return <article ref={ref} className={`${featured ? "article-card article-card-featured" : "article-card"} voice-${post.author.order} reveal-item ${visible ? "is-visible" : ""}`}><Link to={`/articles/${post.slug}`} navigate={navigate}><div className="article-card-copy"><ArticleMeta post={post} navigate={navigate} linked={false} /><h3>{post.title}</h3><p>{post.summary}</p></div><Cover post={post} compact={!featured} priority={featured && post.featuredOrder === 1} /><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></Link></article>;
+  return <article ref={ref} className={`${featured ? "article-card article-card-featured" : "article-card"} voice-${post.author.order} reveal-item ${visible ? "is-visible" : ""}`}><Link to={`/articles/${post.slug}`} navigate={navigate}><div className="article-card-copy"><ArticleMeta post={post} navigate={navigate} linked={false} /><h3>{post.title}</h3><p>{post.summary}</p></div><Cover post={post} compact={!featured} priority={featured} /><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span></Link></article>;
 }
 
 function Manifest({ navigate }) {
@@ -193,13 +193,9 @@ function ArticlesExplorer({ navigate, heading = true }) {
   const [selected, setSelected] = useState([]);
   const [order, setOrder] = useState("published-desc");
   const toggle = (id) => setSelected((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
-  const filtered = posts
-    .filter((post) => selected.length === 0 || selected.includes(post.author.id))
-    .sort((a, b) => {
-      const field = order.startsWith("updated") ? "updatedAt" : "publishedAt";
-      const direction = order.endsWith("desc") ? -1 : 1;
-      return (new Date(a[field]) - new Date(b[field])) * direction;
-    });
+  const field = order.startsWith("updated") ? "updatedAt" : "publishedAt";
+  const direction = order.endsWith("desc") ? "desc" : "asc";
+  const filtered = sortPostsForDiscovery(posts.filter((post) => selected.length === 0 || selected.includes(post.author.id)), field, direction);
   return <section className={heading ? "articles-explorer" : "section-shell section-block articles-home"}>{!heading && <div className="section-heading"><h2>Articles</h2><Link className="quiet-link" to="/articles" navigate={navigate}>Veure tots <ArrowUpRight size={15} /></Link></div>}<div className="filters" aria-label="Filtres d'articles"><div className="filter-pills"><button className={selected.length === 0 ? "active" : ""} onClick={() => setSelected([])} type="button">Tots</button>{authors.map((author) => { const active = selected.includes(author.id); return <button className={active ? "active" : ""} key={author.id} onClick={() => toggle(author.id)} type="button" aria-pressed={active}>{active && <Check size={13} />}{author.name}</button>; })}</div><label className="sort-select">{order.endsWith("desc") ? <ArrowDown size={15} /> : <ArrowUp size={15} />}<span className="sr-only">Ordenar articles</span><select value={order} onChange={(event) => setOrder(event.target.value)}><option value="published-desc">Més recents</option><option value="published-asc">Més antics</option><option value="updated-desc">Actualitzats</option></select></label></div><div className="article-grid">{filtered.slice(0, heading ? 12 : 8).map((post) => <ArticleCard key={post.id} post={post} navigate={navigate} />)}</div></section>;
 }
 
@@ -217,7 +213,7 @@ function AuthorsPage({ navigate }) {
 
 function AuthorPage({ author, navigate }) {
   if (!author) return <NotFound navigate={navigate} />;
-  const authored = posts.filter((post) => post.author.id === author.id);
+  const authored = sortPostsForDiscovery(posts.filter((post) => post.author.id === author.id));
   const isPersonalProfile = author.handle === "marti-carrasco";
   const isDetailedProfile = Boolean(author.headline || author.intro || author.about?.length || author.topics?.length || author.principles?.length);
   if (isPersonalProfile) return <main className="author-detail author-detail-personal">
@@ -272,7 +268,7 @@ function ArticlePage({ post, navigate }) {
   if (!post) return <NotFound navigate={navigate} />;
   const articleUrl = `${String(site.url || window.location.origin).replace(/\/$/, "")}/articles/${post.slug}`;
   const articleJsonLd = { "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.summary, image: new URL(post.cover, articleUrl).href, datePublished: post.publishedAt, dateModified: post.updatedAt, mainEntityOfPage: articleUrl, author: { "@type": "Person", name: post.author.name, url: `${String(site.url || window.location.origin).replace(/\/$/, "")}/autors/${post.author.handle}` }, publisher: { "@type": "Organization", name: site.name } };
-  const more = posts.filter((item) => item.slug !== post.slug).slice(0, 2);
+  const more = sortPostsForDiscovery(posts.filter((item) => item.slug !== post.slug)).slice(0, 2);
   return <main className="article-page"><Seo title={post.title} description={post.summary} path={`/articles/${post.slug}`} image={post.cover} type="article" jsonLd={articleJsonLd} lang={post.lang || "ca"} /><div className="article-header"><Link className="back-link" to="/articles" navigate={navigate}><ChevronLeft size={16} />Articles</Link><ArticleMeta post={post} navigate={navigate} /><h1>{post.title}</h1><p className="article-summary">{post.summary}</p><Cover post={post} priority /></div><div className="article-layout"><ArticleBlocks post={post} /><aside className="article-aside"><ShareButton post={post} /><div className="aside-note"><MessageCircle size={17} /><span>Una idea no s'acaba quan es publica.</span></div></aside></div>{more.length > 0 && <section className="article-more"><div className="section-heading"><h2>Més articles</h2></div><div className="article-grid">{more.map((item) => <ArticleCard key={item.id} post={item} navigate={navigate} />)}</div></section>}{site.commentsEnabled && <section className="article-comments"><div className="section-heading"><h2>Comentaris</h2></div><Comments slug={post.slug} /></section>}</main>;
 }
 

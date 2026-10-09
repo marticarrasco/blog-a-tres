@@ -40,7 +40,7 @@ La web serà una aplicació moderna i estàtica, publicada a Vercel, amb el cont
 | Lectura | No es mostrarà temps estimat de lectura. |
 | Articles relacionats | No s’inclouen inicialment. |
 | Índex | No s’inclou índex automàtic en la primera versió. |
-| Portada | Manifest, articles destacats manuals, destacats per autor i llistat complet filtrable. |
+| Portada | Manifest, articles destacats per autor i llistat complet filtrable. |
 | Comentaris | Identitat amb nom, sense obligar a iniciar sessió amb GitHub. |
 | Moderació | Els tres autors han de poder moderar i eliminar comentaris. |
 | Cost | No s’han d’afegir serveis de pagament ni dependències que obliguen a pagar per l’ús previst. |
@@ -125,20 +125,13 @@ La portada ha de presentar el projecte com una experiència editorial, no només
 - L’animació no pot impedir la lectura, el focus de teclat ni la navegació amb `prefers-reduced-motion`.
 - El manifest complet ha de ser editable des de Pages CMS.
 
-### 6.2 Articles destacats
+### 6.2 Articles destacats per autor
 
-- L’equip ha d’escollir manualment quins articles apareixen com a destacats.
-- La selecció no depèn només de la data.
-- S’ha de poder definir un ordre manual.
-- La presentació pot ser un carrusel o una composició editorial equivalent.
-- Si és un carrusel, ha d’incloure controls visibles, navegació amb teclat, focus correcte i una alternativa que permeta consultar tots els articles sense moure’s automàticament.
-- Els articles arxivats o no publicats no poden aparéixer.
-
-### 6.3 Destacats per autor
-
-- Mostrar una selecció d’articles associats a cadascun dels tres autors.
-- La secció ha de continuar funcionant encara que un autor encara no tinga molts articles.
-- La informació de cada autor ha d’enllaçar a la seua pàgina individual.
+- Cada article té un indicador editorial opcional, desactivat per defecte, per identificar els articles insígnia de l’autor seleccionat.
+- Com a convenció editorial, cada autor destaca els articles que té atribuïts. Els tres editors mantenen la capacitat compartida d’editar tots els articles.
+- Els articles destacats tenen prioritat en els llistats públics; dins de cada grup es respecta l’ordenació seleccionada. Per defecte, els més recents apareixen primer.
+- La portada mostra els tres articles destacats més recents. No es mostra cap etiqueta obligatòria en les targetes.
+- Els articles arxivats o no publicats no poden aparéixer com a destacats públics.
 
 ### 6.4 Tots els articles
 
@@ -197,8 +190,7 @@ Pages CMS és l’editor escollit. L’objectiu és que els autors treballen des
 | Data de publicació | Sí | Representa la data de l’article/publicació editorial. |
 | Data d’actualització | Recomanat | S’ha d’actualitzar quan el text canvia de forma significativa. |
 | Estat | Sí | `draft`, `published` o `archived`. |
-| Article destacat | Sí | Booleà per a la selecció manual. |
-| Ordre del destacat | No | Número per ordenar manualment els destacats. |
+| Article destacat | No | Booleà opcional, desactivat per defecte; els destacats s’ordenen per data i prioritzen els llistats públics. |
 | Resum | Sí | Text curt per a targetes, portada i SEO. |
 | Portada | Sí en la pràctica | Imatge obligatòria per mantenir una identitat visual consistent. |
 | Contingut | Sí | Llista de blocs visuals. |
@@ -425,7 +417,7 @@ Sobre aquesta fundació s’hauran d’afegir o adaptar:
 
 - tres autors amb pàgina individual;
 - articles amb autor explícit i editable;
-- articles destacats escollits manualment;
+- articles destacats per autor, prioritzats en els llistats;
 - filtres i ordenació per autor i data;
 - manifest editorial expandible a la portada;
 - bloc d’opinió alternativa clarament separat;
@@ -551,7 +543,6 @@ Mesures tècniques:
   "updatedAt": "2026-08-31",
   "status": "draft",
   "featured": false,
-  "featuredOrder": 1,
   "summary": "Resum breu.",
   "cover": "/assets/articles/covers/portada.webp",
   "blocks": []
@@ -580,14 +571,14 @@ Ha d’incloure com a mínim nom, subtítol, manifest i una bandera per activar 
 
 La primera versió es considerarà preparada quan:
 
-1. La portada mostra el manifest expandible, destacats manuals, secció per autor i llistat filtrable.
+1. La portada mostra el manifest expandible, els tres articles destacats més recents i el llistat filtrable.
 2. Les tres pàgines d’autor funcionen amb dades editables.
 3. Un autor pot crear un article complet des de Pages CMS sense editar codi.
 4. L’article pot incloure format ric, portada, imatges internes, cites, enllaços i almenys els embeds validats.
 5. L’estat `draft` no és públic i `archived` tampoc.
 6. El canvi de títol no trenca l’URL perquè el slug és independent.
 7. Els tres autors poden editar qualsevol article.
-8. La portada només mostra com a destacats articles publicats.
+8. Els llistats i la portada només mostren com a destacats articles publicats.
 9. El web es desplega automàticament amb Vercel després d’un canvi al repositori.
 10. No hi ha secrets exposats en el JavaScript públic.
 11. El sistema de comentaris permet comentar amb nom sense GitHub.
