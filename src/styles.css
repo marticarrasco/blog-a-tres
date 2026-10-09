@@ -18,7 +18,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; background: var(--paper); overflow-x: hidden; }
+body { margin: 0; min-width: 320px; background: var(--paper); }
 button, input, select { font: inherit; }
 button { color: inherit; cursor: pointer; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em; }
@@ -142,13 +142,14 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .author-bio nav a { display: inline-flex; align-items: center; gap: .35rem; }
 .author-articles { grid-template-columns: repeat(3, minmax(0,1fr)); }
 
-/* Martí's profile is intentionally slower and more essay-like than the author index. */
+/* Author profiles leave room for long, personal biographies. */
 .author-detail-rich { max-width: 1240px; }
 .author-detail-rich .author-detail-header { min-height: 46vh; align-items: flex-end; padding-bottom: clamp(4rem, 8vw, 8rem); }
 .author-detail-rich .author-detail-header .eyebrow { margin: 0 0 1.3rem; }
 .author-detail-rich .author-detail-header h1 { max-width: 980px; }
 .author-detail-personal { max-width: none; padding: 0 0 clamp(4rem, 9vw, 8rem); }
 .author-personal-hero { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem; min-height: clamp(470px, 63vw, 740px); padding: clamp(2rem, 7vw, 7rem); overflow: hidden; color: #fff; background: #353a3e; }
+.author-personal-hero.author-personal-hero-plain { min-height: 440px; }
 .author-personal-hero::before { position: absolute; z-index: -1; inset: 0; content: ""; background-image: linear-gradient(90deg, rgba(16,20,22,.04), rgba(16,20,22,.03) 48%, rgba(16,20,22,.28)), linear-gradient(0deg, rgba(16,20,22,.62), transparent 48%), var(--profile-background); background-position: center, center, center 49%; background-size: cover; }
 .author-personal-heading { display: grid; justify-items: start; gap: 1.5rem; }
 .author-personal-hero h1 { max-width: 800px; margin: 0; font-size: clamp(4rem, 10vw, 9rem); font-weight: 600; line-height: .84; letter-spacing: -.08em; text-shadow: 0 2px 30px rgba(0,0,0,.16); }
@@ -156,10 +157,19 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .author-personal-socials a { display: inline-flex; align-items: center; gap: .4rem; padding: .65rem .85rem; border: 1px solid rgba(255,255,255,.58); color: #fff; font-size: .78rem; text-decoration: none; backdrop-filter: blur(8px); background: rgba(16,20,22,.2); transition: background .2s, border-color .2s; }
 .author-personal-socials a:hover { border-color: #fff; background: rgba(16,20,22,.55); }
 .author-personal-photo { display: block; width: clamp(190px, 25vw, 330px); aspect-ratio: 4 / 5; object-fit: cover; object-position: center 32%; border: 8px solid rgba(255,255,255,.82); box-shadow: 0 22px 80px rgba(19,25,28,.23); }
+.author-personal-monogram { display: grid; place-items: center; width: clamp(150px, 23vw, 280px); aspect-ratio: 4 / 5; border: 8px solid rgba(255,255,255,.75); color: rgba(255,255,255,.9); background: rgba(255,255,255,.12); font-size: clamp(5rem, 13vw, 10rem); line-height: 1; }
 .author-personal-content { display: grid; grid-template-columns: minmax(0, 780px); justify-content: center; gap: 3rem; padding-block: clamp(4rem, 8vw, 7rem) 0; }
 .author-personal-copy { font-size: clamp(1rem, 1.35vw, 1.12rem); line-height: 1.82; }
 .author-personal-copy p { margin: 0 0 1.5rem; }
 .author-personal-copy p:last-child { margin-bottom: 0; }
+.author-biography { min-width: 0; overflow-wrap: anywhere; }
+.author-biography-text > :first-child { margin-top: 0; }
+.author-biography-text pre, .author-biography-text table { display: block; max-width: 100%; overflow-x: auto; }
+.author-biography-media { margin: 2.5rem 0; }
+.author-biography-media img { display: block; width: 100%; max-width: 100%; height: auto; }
+.author-biography-media figcaption { margin-top: .65rem; color: var(--muted); font-size: .8rem; line-height: 1.5; }
+.author-biography-media .embed-card, .author-biography-media .video-embed { margin: 0; }
+.author-biography-media .embed-card button { min-height: 44px; }
 .author-publications-preview { padding-block: clamp(3.5rem, 6vw, 5.5rem) 0; }
 .author-publications-preview .section-heading { align-items: flex-end; margin-bottom: 1.6rem; }
 .author-publications-preview .section-heading h2 { font-size: clamp(1.9rem, 3vw, 3rem); }
@@ -437,8 +447,10 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
   .manifest-page-modern { padding-inline: 1rem; }
   .author-tile, .author-profile { min-height: 390px; }
   .author-personal-hero { grid-template-columns: 1fr; align-content: end; min-height: 660px; gap: 1.5rem; padding: 1.25rem; background-color: #353a3e; }
+  .author-personal-hero.author-personal-hero-plain { min-height: 390px; }
   .author-personal-hero::before { background-position: center, center, 46% center; }
   .author-personal-photo { width: min(42vw, 190px); border-width: 5px; }
+  .author-personal-monogram { width: min(42vw, 190px); border-width: 5px; font-size: clamp(5rem, 25vw, 8rem); }
   .author-personal-hero h1 { font-size: clamp(3.7rem, 16vw, 6rem); }
   .author-publications-preview { padding-top: 3rem; }
   .author-preview-row { grid-template-columns: repeat(3, minmax(78vw, 1fr)); overflow-x: auto; padding-bottom: .8rem; scroll-snap-type: x mandatory; }
@@ -456,4 +468,93 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   #main-content > main, .reveal-section .manifest-section-content, .reveal-section .section-heading, .reveal-section .author-grid, .reveal-item { animation: none; opacity: 1; transform: none; transition: none; }
+}
+
+/* Mobile layouts: keep content within the viewport and controls comfortable to tap. */
+.text-block img, .text-block video, .text-block iframe { max-width: 100%; height: auto; }
+.text-block pre, .text-block table { display: block; max-width: 100%; overflow-x: auto; }
+.text-block, .opinion-block, .manifest-long { overflow-wrap: anywhere; }
+.author-tile h3, .author-profile h2 { white-space: normal; overflow-wrap: anywhere; }
+.author-biography, .author-biography-media { min-width: 0; }
+.author-biography-media { max-width: 100%; margin: 2rem 0; }
+.author-biography-media img { display: block; max-width: 100%; height: auto; }
+.author-biography-media figcaption { margin-top: .6rem; color: var(--muted); font-size: .8rem; }
+.author-biography-media .video-embed { margin: 0; }
+
+@media (min-width: 761px) and (max-width: 1050px) {
+  .filters { flex-wrap: wrap; }
+  .filter-controls { margin-left: auto; }
+  .author-grid, .authors-page-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .author-grid > :last-child, .authors-page-grid > :last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 760px) {
+  .site-header { padding-inline: 1rem; }
+  .wordmark { min-height: 44px; }
+  .menu-toggle { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; }
+  .site-nav { top: 100%; padding: .75rem 1rem 1rem; box-shadow: 0 12px 24px rgba(41,39,36,.1); }
+  .site-nav.is-open { gap: .25rem; }
+  .site-nav a { display: flex; align-items: center; min-height: 44px; padding: .5rem .75rem; }
+
+  .hero { min-height: calc(100svh - 68px); padding-block: clamp(3rem, 10svh, 5rem) 5rem; }
+  .hero h1 { font-size: clamp(2.65rem, 11vw, 5rem); line-height: .98; overflow-wrap: anywhere; }
+  .hero > .hero-copy > p:last-child { margin-top: 1.5rem; font-size: 1rem; line-height: 1.55; }
+  .global-thread-field { opacity: .16; }
+  .global-thread path { stroke-width: 12px; }
+
+  .section-heading { flex-wrap: wrap; align-items: flex-start; gap: .75rem 1.25rem; }
+  .section-heading h2 { font-size: clamp(2rem, 8vw, 3.4rem); overflow-wrap: anywhere; }
+  .section-heading .quiet-link, .manifest-link, .back-link { display: inline-flex; align-items: center; min-height: 44px; }
+  .section-block, .author-band { padding-block: 4rem; }
+  .article-grid { row-gap: 2.5rem; }
+  .article-card h3 { overflow-wrap: anywhere; }
+  .article-meta { flex-wrap: wrap; }
+  .author-tile h3, .author-profile h2 { white-space: normal; overflow-wrap: anywhere; }
+
+  .filter-pills { gap: .5rem; }
+  .filter-pills button { min-height: 44px; padding-inline: .9rem; }
+  .filter-controls { align-items: stretch; }
+  .filter-select { min-width: 0; }
+  .filter-select-trigger { min-height: 44px; }
+  .filter-select-option { min-height: 44px; white-space: normal; }
+  .filter-select:last-child .filter-select-menu { right: 0; left: auto; }
+
+  .simple-page-heading h1 { font-size: clamp(3.3rem, 15vw, 6rem); overflow-wrap: anywhere; }
+  .author-detail-header h1, .author-personal-hero h1 { font-size: clamp(2.7rem, 11vw, 5rem); overflow-wrap: anywhere; }
+  .author-personal-hero { min-height: min(660px, calc(100svh - 68px)); }
+  .author-personal-socials a, .author-links a { min-height: 44px; }
+  .author-preview-row { grid-auto-columns: minmax(78vw, 1fr); grid-auto-flow: column; grid-template-columns: none; overscroll-behavior-inline: contain; }
+  .author-preview-row .article-card { min-width: 0; }
+  .author-topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .author-topic { min-width: 0; padding: 1rem; }
+  .author-topic h3, .author-topic p { overflow-wrap: anywhere; }
+
+  .manifest-page-modern h1 { font-size: clamp(2.35rem, 10vw, 5.6rem); white-space: normal; overflow-wrap: anywhere; }
+  .article-header { padding-block: 2.5rem 2rem; }
+  .article-header h1 { font-size: clamp(2.3rem, 9.5vw, 4.8rem); line-height: 1; overflow-wrap: anywhere; }
+  .article-summary { font-size: 1.05rem; }
+  .article-header .cover { min-height: 0; height: auto; aspect-ratio: 4 / 3; margin-top: 2.5rem; }
+  .text-block { font-size: 1rem; line-height: 1.75; }
+  .text-block h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .text-block h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .text-block blockquote { font-size: 1.15rem; }
+  .embed-card, .opinion-block { padding: 1rem; }
+  .embed-card button, .embed-card a, .share-button { min-height: 44px; }
+  .article-aside { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1rem; }
+  .aside-note { margin-top: .5rem; }
+  .article-comments { margin-top: 4rem; }
+  .comments-waline { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+  .comments-waline input, .comments-waline textarea { max-width: 100%; font-size: 16px; }
+
+  .footer-links { gap: .25rem 1rem; }
+  .footer-links a, .footer-socials a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (max-width: 380px) {
+  .filter-controls { flex-direction: column; }
+  .filter-select { width: 100%; flex-basis: auto; }
+  .filter-select-menu { width: 100%; max-width: 100%; }
+  .author-topic-grid { grid-template-columns: 1fr; }
+  .author-topic { min-height: 0; }
+  .author-topic h3 { margin-top: 2rem; }
 }

@@ -8,5 +8,11 @@
   "role": "Idees que no caben en una sola disciplina",
   "bio": "Un espai per connectar idees, mirar-les des de més d'un angle i deixar que les preguntes facen la seua feina.",
   "avatar": "",
-  "links": []
+  "links": [],
+  "biography": [
+    {
+      "type": "text",
+      "body": "Un espai per connectar idees, mirar-les des de més d'un angle i deixar que les preguntes facen la seua feina."
+    }
+  ]
 }

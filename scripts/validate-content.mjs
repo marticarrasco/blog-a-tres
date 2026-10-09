@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, resolve } from "node:path";
+import { videoEmbed } from "../src/video.js";
 
 const root = resolve(import.meta.dirname, "..");
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
@@ -37,6 +38,22 @@ for (const [name, author] of authors) {
   authorRefs.add(`content/authors/${name}`);
   authorRefs.add(author.handle);
   if (author.avatar) checkImage(author.avatar, `${prefix} avatar`);
+  if (author.profileBackground) checkImage(author.profileBackground, `${prefix} fons de perfil`);
+  if (author.biography !== undefined) {
+    if (!Array.isArray(author.biography)) errors.push(`${prefix}: la biografia ha de ser una llista de blocs.`);
+    else author.biography.forEach((block, index) => {
+      const label = `${prefix}, bloc de biografia ${index + 1}`;
+      if (block.type === "text") {
+        if (!block.body?.trim()) errors.push(`${label}: falta el text.`);
+      } else if (block.type === "image") {
+        checkImage(block.src, `${label} fotografia`, true);
+        if (!block.alt?.trim()) errors.push(`${label}: falta el text alternatiu.`);
+      } else if (block.type === "video") {
+        if (!videoEmbed(block.url)) errors.push(`${label}: cal una URL HTTPS de YouTube o Vimeo vàlida.`);
+        if (!block.title?.trim()) errors.push(`${label}: falta el títol accessible.`);
+      } else errors.push(`${label}: tipus desconegut.`);
+    });
+  }
 }
 
 for (const [name, post] of posts) {

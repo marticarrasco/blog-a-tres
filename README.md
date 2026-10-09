@@ -31,8 +31,11 @@ La validació comprova camps obligatoris, slugs, autors, dates, portades, mida i
 - Portades: `public/assets/articles/covers/`
 - Imatges internes: `public/assets/articles/inline/`
 - Avatars: `public/assets/articles/avatars/`
+- Fotografies de biografia: `public/assets/articles/authors/`
 
 La font de veritat és [PROJECT-REQUIREMENTS.md](PROJECT-REQUIREMENTS.md). El model de Pages CMS permet text enriquit, imatges, embeds i una opinió alternativa. Els fitxers d’imatge acceptats són JPEG, PNG, WebP i GIF, amb noms sanejats i un límit de 5 MB verificat abans del build. SVG i pujada directa de vídeo queden desactivats en la primera versió.
+
+Cada autor pot editar la seua pàgina a `Autors` → `Biografia de la pàgina` a Pages CMS. Els blocs de text, fotografia i vídeo es poden ordenar lliurement. Les fotografies admeten text alternatiu i peu de foto; els vídeos admeten enllaços HTTPS de YouTube o Vimeo, títol accessible i peu de vídeo. El vídeo només es carrega quan el lector prem el botó. `Descripció curta` serveix de resum per als cercadors i es mostra com a text de la pàgina si encara no hi ha blocs de biografia. La biografia llarga de Martí ja s’ha migrat als blocs editables.
 
 Els articles destacats per autor ja tenen un camp editorial a Pages CMS i prioritzen els llistats públics; la portada mostra els tres més recents. La gestió per autor és una convenció editorial i els tres editors poden continuar editant qualsevol article. Els articles tenen també un tipus editorial estructurat que es pot filtrar conjuntament amb l’autor. Les millores pendents —paraules clau, cerca avançada i avisos per correu— estan descrites a [PROPOSTES-MILLORES.md](PROPOSTES-MILLORES.md).
 

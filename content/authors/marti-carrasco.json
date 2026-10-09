@@ -7,44 +7,149 @@
   "twitter": "https://x.com/marticarrasco7",
   "role": "Tecnologia, cultura i preguntes obertes",
   "bio": "M'agrada entendre com funcionen les coses i què passa quan les mirem des d'un altre lloc.",
-  "about": [
-    "Estudio Matemàtiques, però em costa una mica respondre quan em pregunten què m’interessa. La resposta curta seria que moltes coses. La tecnologia i la intel·ligència artificial ocupen una part important del meu temps, però també m’interessen l’educació, l’economia, les empreses, la política i, en general, qualsevol tema que en algun moment em faci venir ganes d’entendre’n una mica més.",
-    "Tampoc tinc especialment clar cap a on em portarà tot això. Tinc vint anys i, tot i que evidentment tinc idees sobre què m’agradaria fer, em semblaria una mica estrany poder explicar ja una història perfectament coherent sobre qui soc i què vull ser. El que sí que puc fer és explicar algunes de les coses que m’han anat portant fins aquí.",
-    "Soc de Lliçà de Vall, un poble d’uns sis mil habitants a prop de Granollers, i vaig estudiar sempre a l’escola del poble. Un dels records que conservo especialment és el de les classes de matemàtiques de primer d’ESO amb l’Ernest Badia. Va ser qui ens va introduir a l’àlgebra i, per tant, a aquella idea una mica estranya al principi que les matemàtiques també es podien fer amb lletres.",
-    "Em va fascinar. Podies agafar un problema explicat amb paraules i traduir-lo a símbols, incògnites i operacions. Després manipulaves aquella equació seguint unes regles i, si ho havies fet bé, acabaves trobant la resposta al problema amb què havies començat. A part, és clar, hi havia aquella satisfacció bastant immediata d’aconseguir resoldre una equació que cinc minuts abans no sabies ni per on començar. Encara avui una de les coses que més m’agraden de les matemàtiques és precisament aquest moment en què alguna cosa que semblava complicada de cop encaixa.",
-    "Aquell mateix curs em van regalar el meu primer kit d’Arduino. Recordo que el meu pare em va preguntar si no seria una d’aquelles coses que utilitzaria durant quatre dies i després deixaria abandonada en un calaix. Jo li vaig dir que no, que amb allò podia fer pràcticament qualsevol cosa que em permetessin la imaginació i les meves habilitats. Segurament ho vaig vendre una mica bé, però aquesta vegada tenia raó.",
-    "Vaig començar a fer projectes petits. Alguns naixien d’alguna necessitat que probablement només existia al meu cap i d’altres els feia simplement perquè em semblaven divertits. Aquell estiu, per exemple, vaig començar a construir un plotter, una màquina que movia un bolígraf sobre un paper per dibuixar-hi el que li enviessis des de l’ordinador.",
-    "No va funcionar especialment bé a la primera. Ni a la segona.",
-    "Però això també formava part de la diversió. Si els motors no es movien com volia, havia d’aprendre una mica més d’electrònica. Si el moviment no era prou precís, havia d’entendre què estava passant mecànicament. Per controlar-ho tot necessitava programar i, si em faltava alguna peça, havia de trobar la manera de fabricar-la o improvisar-ne una altra.",
-    "Amb el temps vaig anar refent aquell plotter diverses vegades. A mesura que aprenia alguna cosa nova, podia tornar a una versió anterior i pensar: això ara ho faria diferent. Crec que una de les coses que em va quedar d’aquella època és perdre bastant la por d’entrar en terrenys que no dominava. Si per fer una cosa necessitava aprendre alguna cosa que no sabia, doncs tocava aprendre-la.",
-    "Amb la programació també em vaig adonar que cada llenguatge nou resultava una mica menys desconegut que l’anterior. No perquè fossin iguals, sinó perquè començaves a reconèixer idees, maneres d’organitzar un problema i coses que ja havies vist abans. Amb els anys he tingut la sensació que això passa en molts altres àmbits: com més coses aprens, més fàcil és trobar alguna cosa coneguda quan entres en un lloc nou.",
-    "Però no tot el que m’interessava tenia una utilitat concreta ni crec que calgui buscar-l’hi. Durant uns anys, per exemple, em vaig aficionar molt a la màgia. Em podia passar hores practicant un moviment perquè semblés natural o preparant algun petit espectacle.",
-    "Potser hi ha alguna relació profunda entre totes aquestes aficions. O potser simplement m’han agradat coses diferents en moments diferents. Segurament una mica de totes dues.",
-    "Mentrestant, també vaig començar a interessar-me per coses que quedaven bastant lluny dels Arduinos. Vaig créixer durant uns anys políticament molt intensos a Catalunya i era difícil no assabentar-se del que estava passant durant el procés. La política era a les notícies, al carrer, a l’escola i a les converses familiars. Crec que va ser la primera vegada que vaig començar a seguir l’actualitat amb una certa continuïtat.",
-    "No tinc gaire clar quina opinió tenia de moltes coses aleshores, i segurament en tenia algunes amb molta més seguretat de la que em permetien els arguments. Però l’interès per la política i per la societat es va quedar. Amb el temps m’ha interessat cada vegada menys limitar-me a saber què penso sobre una qüestió i més entendre per què la penso, què diu qui no hi està d’acord o quines conseqüències pot tenir una decisió que, vista d’entrada, semblava evident.",
-    "Quan vaig arribar a quart d’ESO tampoc tenia gaire clar què volia estudiar. De petit deia que volia fer alguna cosa «amb cables i que es pogués programar per darrere», que era una manera bastant poc precisa de dir que probablement acabaria fent alguna enginyeria. El que sí que tenia decidit era que faria el batxillerat tecnològic.",
-    "Va ser llavors quan vaig descobrir el Batxillerat Internacional. No recordo exactament com hi vaig arribar, però sí que recordo passar bastant temps informant-me sobre el Programa del Diploma, les assignatures, els treballs i la manera de funcionar. En la modalitat tecnològica, l’opció que vaig trobar era a Cerdanyola.",
-    "Això significava marxar de l’escola del poble on havia estat sempre i, a més, presentar-me a unes proves d’accés. Per mi era una situació nova. Fins aleshores el recorregut havia estat força automàtic: acabaves un curs i començaves el següent. Aquesta vegada havia escollit intentar entrar en un lloc on perfectament em podien dir que no.",
-    "I em feia il·lusió.",
-    "Sempre he sigut bastant ambiciós i m’han atret els reptes, de vegades fins al punt de complicar-me coses que podrien haver estat molt més senzilles. En aquell moment, però, tenia bastant clar que ho volia intentar.",
-    "Quan vaig començar el Batxillerat Internacional encara pensava que acabaria estudiant alguna enginyeria. Però durant aquells dos anys les matemàtiques em van anar interessant cada vegada més. Vaig començar a descobrir-ne una part que fins aleshores pràcticament no coneixia. No es tractava només de calcular o d’arribar a una resposta, sinó de preguntar-se per què una cosa era certa i intentar demostrar-la.",
-    "Al final vaig decidir estudiar el grau de Matemàtiques.",
-    "No va ser tant un abandonament de la tecnologia com podria semblar. He continuat programant, construint projectes i interessant-me per tot aquell món. Simplement, les matemàtiques van acabar sent alguna cosa que volia estudiar per si mateixa.",
-    "I llavors, mentre jo anava fent tot això, va aparèixer la intel·ligència artificial generativa.",
-    "És difícil explicar què significa ara mateix perquè tinc la sensació que encara estem enmig del canvi. Però, com a mínim en el meu cas, ja ha modificat bastant la manera com treballo i sobretot la manera com penso què puc arribar a fer.",
-    "Abans, tenir una idea implicava moltes vegades fer mentalment una llista de tot el que no sabia fer. Necessito aprendre aquesta tecnologia, entendre aquesta llibreria, saber dissenyar això, programar allò altre... i alguns projectes morien aquí. Ara aquesta barrera s’ha reduït molt. No ha desaparegut —i de fet saber què estàs fent continua marcant una diferència enorme—, però puc experimentar amb coses que fa uns anys probablement ni hauria començat.",
-    "A mi això em resulta molt estimulant. També em genera bastantes preguntes.",
-    "Què vol dir aprendre a programar si una màquina pot generar una part important del codi? Quines habilitats tindran valor d’aquí a uns anys? Com canviarà la manera d’estudiar? Què passa quan produir text, imatges, software o anàlisi es torna molt més barat? I, sobretot, quines de les prediccions tan segures que fem ara ens faran una mica de vergonya quan les rellegim d’aquí a deu anys?",
-    "No en tinc les respostes. Precisament per això és un tema sobre el qual probablement escriuré bastant aquí.",
-    "També m’interessen cada vegada més l’economia i les empreses, especialment la part de producte. M’agrada veure com una idea passa de ser una cosa que algú té al cap a convertir-se en alguna cosa que altres persones utilitzen i, eventualment, estan disposades a pagar. Em crida l’atenció per què hi ha productes que troben molt bé el seu lloc i d’altres que, tot i semblar bones idees, no acaben d’arrencar; com es prenen les decisions dins d’una empresa, com es creix sense espatllar allò que funcionava o fins a quin punt petits canvis poden alterar la manera com utilitzem un producte.",
-    "No sé si d’aquí a deu anys em dedicaré principalment a les matemàtiques, a la tecnologia, a producte, a alguna cosa relacionada amb la intel·ligència artificial o a una feina que ara mateix ni sé que existeix. Tampoc em preocupa gaire no saber-ho. Sí que sé que m’agradaria participar en projectes ambiciosos, continuar aprenent i conservar una certa llibertat per anar canviant de direcció quan descobreixi alguna cosa que m’interessa més.",
-    "I una mica per això també soc aquí.",
-    "No començo a escriure aquest blog perquè cregui que, amb vint anys, tingui grans lliçons per donar sobre política, educació, tecnologia o economia. Més aviat al contrari. Hi ha moltes coses sobre les quals tinc intuïcions, opinions o preguntes que encara no sé ordenar gaire bé.",
-    "Escriure és una manera d’obligar-me a fer-ho.",
-    "De vegades servirà per reforçar una idea que ja tenia. Espero que altres vegades passi exactament el contrari i, mentre intento defensar alguna cosa, descobreixi que no la puc defensar tan bé com pensava. I si d’aquí a uns anys rellegeixo un article i ja no hi estic d’acord, probablement serà una bona notícia.",
-    "Això és, almenys de moment, el que espero trobar entre aquestes línies."
-  ],
   "avatar": "/assets/articles/avatars/marti-carrasco-perfil.png",
   "links": [],
-  "profileBackground": "/assets/articles/avatars/marti-carrasco-paisatge.png"
+  "profileBackground": "/assets/articles/avatars/marti-carrasco-paisatge.png",
+  "biography": [
+    {
+      "type": "text",
+      "body": "Estudio Matemàtiques, però em costa una mica respondre quan em pregunten què m’interessa. La resposta curta seria que moltes coses. La tecnologia i la intel·ligència artificial ocupen una part important del meu temps, però també m’interessen l’educació, l’economia, les empreses, la política i, en general, qualsevol tema que en algun moment em faci venir ganes d’entendre’n una mica més."
+    },
+    {
+      "type": "text",
+      "body": "Tampoc tinc especialment clar cap a on em portarà tot això. Tinc vint anys i, tot i que evidentment tinc idees sobre què m’agradaria fer, em semblaria una mica estrany poder explicar ja una història perfectament coherent sobre qui soc i què vull ser. El que sí que puc fer és explicar algunes de les coses que m’han anat portant fins aquí."
+    },
+    {
+      "type": "text",
+      "body": "Soc de Lliçà de Vall, un poble d’uns sis mil habitants a prop de Granollers, i vaig estudiar sempre a l’escola del poble. Un dels records que conservo especialment és el de les classes de matemàtiques de primer d’ESO amb l’Ernest Badia. Va ser qui ens va introduir a l’àlgebra i, per tant, a aquella idea una mica estranya al principi que les matemàtiques també es podien fer amb lletres."
+    },
+    {
+      "type": "text",
+      "body": "Em va fascinar. Podies agafar un problema explicat amb paraules i traduir-lo a símbols, incògnites i operacions. Després manipulaves aquella equació seguint unes regles i, si ho havies fet bé, acabaves trobant la resposta al problema amb què havies començat. A part, és clar, hi havia aquella satisfacció bastant immediata d’aconseguir resoldre una equació que cinc minuts abans no sabies ni per on començar. Encara avui una de les coses que més m’agraden de les matemàtiques és precisament aquest moment en què alguna cosa que semblava complicada de cop encaixa."
+    },
+    {
+      "type": "text",
+      "body": "Aquell mateix curs em van regalar el meu primer kit d’Arduino. Recordo que el meu pare em va preguntar si no seria una d’aquelles coses que utilitzaria durant quatre dies i després deixaria abandonada en un calaix. Jo li vaig dir que no, que amb allò podia fer pràcticament qualsevol cosa que em permetessin la imaginació i les meves habilitats. Segurament ho vaig vendre una mica bé, però aquesta vegada tenia raó."
+    },
+    {
+      "type": "text",
+      "body": "Vaig començar a fer projectes petits. Alguns naixien d’alguna necessitat que probablement només existia al meu cap i d’altres els feia simplement perquè em semblaven divertits. Aquell estiu, per exemple, vaig començar a construir un plotter, una màquina que movia un bolígraf sobre un paper per dibuixar-hi el que li enviessis des de l’ordinador."
+    },
+    {
+      "type": "text",
+      "body": "No va funcionar especialment bé a la primera. Ni a la segona."
+    },
+    {
+      "type": "text",
+      "body": "Però això també formava part de la diversió. Si els motors no es movien com volia, havia d’aprendre una mica més d’electrònica. Si el moviment no era prou precís, havia d’entendre què estava passant mecànicament. Per controlar-ho tot necessitava programar i, si em faltava alguna peça, havia de trobar la manera de fabricar-la o improvisar-ne una altra."
+    },
+    {
+      "type": "text",
+      "body": "Amb el temps vaig anar refent aquell plotter diverses vegades. A mesura que aprenia alguna cosa nova, podia tornar a una versió anterior i pensar: això ara ho faria diferent. Crec que una de les coses que em va quedar d’aquella època és perdre bastant la por d’entrar en terrenys que no dominava. Si per fer una cosa necessitava aprendre alguna cosa que no sabia, doncs tocava aprendre-la."
+    },
+    {
+      "type": "text",
+      "body": "Amb la programació també em vaig adonar que cada llenguatge nou resultava una mica menys desconegut que l’anterior. No perquè fossin iguals, sinó perquè començaves a reconèixer idees, maneres d’organitzar un problema i coses que ja havies vist abans. Amb els anys he tingut la sensació que això passa en molts altres àmbits: com més coses aprens, més fàcil és trobar alguna cosa coneguda quan entres en un lloc nou."
+    },
+    {
+      "type": "text",
+      "body": "Però no tot el que m’interessava tenia una utilitat concreta ni crec que calgui buscar-l’hi. Durant uns anys, per exemple, em vaig aficionar molt a la màgia. Em podia passar hores practicant un moviment perquè semblés natural o preparant algun petit espectacle."
+    },
+    {
+      "type": "text",
+      "body": "Potser hi ha alguna relació profunda entre totes aquestes aficions. O potser simplement m’han agradat coses diferents en moments diferents. Segurament una mica de totes dues."
+    },
+    {
+      "type": "text",
+      "body": "Mentrestant, també vaig començar a interessar-me per coses que quedaven bastant lluny dels Arduinos. Vaig créixer durant uns anys políticament molt intensos a Catalunya i era difícil no assabentar-se del que estava passant durant el procés. La política era a les notícies, al carrer, a l’escola i a les converses familiars. Crec que va ser la primera vegada que vaig començar a seguir l’actualitat amb una certa continuïtat."
+    },
+    {
+      "type": "text",
+      "body": "No tinc gaire clar quina opinió tenia de moltes coses aleshores, i segurament en tenia algunes amb molta més seguretat de la que em permetien els arguments. Però l’interès per la política i per la societat es va quedar. Amb el temps m’ha interessat cada vegada menys limitar-me a saber què penso sobre una qüestió i més entendre per què la penso, què diu qui no hi està d’acord o quines conseqüències pot tenir una decisió que, vista d’entrada, semblava evident."
+    },
+    {
+      "type": "text",
+      "body": "Quan vaig arribar a quart d’ESO tampoc tenia gaire clar què volia estudiar. De petit deia que volia fer alguna cosa «amb cables i que es pogués programar per darrere», que era una manera bastant poc precisa de dir que probablement acabaria fent alguna enginyeria. El que sí que tenia decidit era que faria el batxillerat tecnològic."
+    },
+    {
+      "type": "text",
+      "body": "Va ser llavors quan vaig descobrir el Batxillerat Internacional. No recordo exactament com hi vaig arribar, però sí que recordo passar bastant temps informant-me sobre el Programa del Diploma, les assignatures, els treballs i la manera de funcionar. En la modalitat tecnològica, l’opció que vaig trobar era a Cerdanyola."
+    },
+    {
+      "type": "text",
+      "body": "Això significava marxar de l’escola del poble on havia estat sempre i, a més, presentar-me a unes proves d’accés. Per mi era una situació nova. Fins aleshores el recorregut havia estat força automàtic: acabaves un curs i començaves el següent. Aquesta vegada havia escollit intentar entrar en un lloc on perfectament em podien dir que no."
+    },
+    {
+      "type": "text",
+      "body": "I em feia il·lusió."
+    },
+    {
+      "type": "text",
+      "body": "Sempre he sigut bastant ambiciós i m’han atret els reptes, de vegades fins al punt de complicar-me coses que podrien haver estat molt més senzilles. En aquell moment, però, tenia bastant clar que ho volia intentar."
+    },
+    {
+      "type": "text",
+      "body": "Quan vaig començar el Batxillerat Internacional encara pensava que acabaria estudiant alguna enginyeria. Però durant aquells dos anys les matemàtiques em van anar interessant cada vegada més. Vaig començar a descobrir-ne una part que fins aleshores pràcticament no coneixia. No es tractava només de calcular o d’arribar a una resposta, sinó de preguntar-se per què una cosa era certa i intentar demostrar-la."
+    },
+    {
+      "type": "text",
+      "body": "Al final vaig decidir estudiar el grau de Matemàtiques."
+    },
+    {
+      "type": "text",
+      "body": "No va ser tant un abandonament de la tecnologia com podria semblar. He continuat programant, construint projectes i interessant-me per tot aquell món. Simplement, les matemàtiques van acabar sent alguna cosa que volia estudiar per si mateixa."
+    },
+    {
+      "type": "text",
+      "body": "I llavors, mentre jo anava fent tot això, va aparèixer la intel·ligència artificial generativa."
+    },
+    {
+      "type": "text",
+      "body": "És difícil explicar què significa ara mateix perquè tinc la sensació que encara estem enmig del canvi. Però, com a mínim en el meu cas, ja ha modificat bastant la manera com treballo i sobretot la manera com penso què puc arribar a fer."
+    },
+    {
+      "type": "text",
+      "body": "Abans, tenir una idea implicava moltes vegades fer mentalment una llista de tot el que no sabia fer. Necessito aprendre aquesta tecnologia, entendre aquesta llibreria, saber dissenyar això, programar allò altre... i alguns projectes morien aquí. Ara aquesta barrera s’ha reduït molt. No ha desaparegut —i de fet saber què estàs fent continua marcant una diferència enorme—, però puc experimentar amb coses que fa uns anys probablement ni hauria començat."
+    },
+    {
+      "type": "text",
+      "body": "A mi això em resulta molt estimulant. També em genera bastantes preguntes."
+    },
+    {
+      "type": "text",
+      "body": "Què vol dir aprendre a programar si una màquina pot generar una part important del codi? Quines habilitats tindran valor d’aquí a uns anys? Com canviarà la manera d’estudiar? Què passa quan produir text, imatges, software o anàlisi es torna molt més barat? I, sobretot, quines de les prediccions tan segures que fem ara ens faran una mica de vergonya quan les rellegim d’aquí a deu anys?"
+    },
+    {
+      "type": "text",
+      "body": "No en tinc les respostes. Precisament per això és un tema sobre el qual probablement escriuré bastant aquí."
+    },
+    {
+      "type": "text",
+      "body": "També m’interessen cada vegada més l’economia i les empreses, especialment la part de producte. M’agrada veure com una idea passa de ser una cosa que algú té al cap a convertir-se en alguna cosa que altres persones utilitzen i, eventualment, estan disposades a pagar. Em crida l’atenció per què hi ha productes que troben molt bé el seu lloc i d’altres que, tot i semblar bones idees, no acaben d’arrencar; com es prenen les decisions dins d’una empresa, com es creix sense espatllar allò que funcionava o fins a quin punt petits canvis poden alterar la manera com utilitzem un producte."
+    },
+    {
+      "type": "text",
+      "body": "No sé si d’aquí a deu anys em dedicaré principalment a les matemàtiques, a la tecnologia, a producte, a alguna cosa relacionada amb la intel·ligència artificial o a una feina que ara mateix ni sé que existeix. Tampoc em preocupa gaire no saber-ho. Sí que sé que m’agradaria participar en projectes ambiciosos, continuar aprenent i conservar una certa llibertat per anar canviant de direcció quan descobreixi alguna cosa que m’interessa més."
+    },
+    {
+      "type": "text",
+      "body": "I una mica per això també soc aquí."
+    },
+    {
+      "type": "text",
+      "body": "No començo a escriure aquest blog perquè cregui que, amb vint anys, tingui grans lliçons per donar sobre política, educació, tecnologia o economia. Més aviat al contrari. Hi ha moltes coses sobre les quals tinc intuïcions, opinions o preguntes que encara no sé ordenar gaire bé."
+    },
+    {
+      "type": "text",
+      "body": "Escriure és una manera d’obligar-me a fer-ho."
+    },
+    {
+      "type": "text",
+      "body": "De vegades servirà per reforçar una idea que ja tenia. Espero que altres vegades passi exactament el contrari i, mentre intento defensar alguna cosa, descobreixi que no la puc defensar tan bé com pensava. I si d’aquí a uns anys rellegeixo un article i ja no hi estic d’acord, probablement serà una bona notícia."
+    },
+    {
+      "type": "text",
+      "body": "Això és, almenys de moment, el que espero trobar entre aquestes línies."
+    }
+  ]
 }

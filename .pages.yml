@@ -202,10 +202,58 @@ content:
         label: Frase curta
         type: string
       - name: bio
-        label: Biografia
+        label: Descripció curta
+        description: Resum breu per als cercadors i les presentacions de l'autor.
         type: rich-text
         options:
           format: markdown
+      - name: biography
+        label: Biografia de la pàgina
+        description: Afegeix i ordena blocs de text, fotografies i vídeos entre els paràgrafs.
+        type: block
+        list: true
+        required: false
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            fields:
+              - name: body
+                label: Text
+                type: rich-text
+                options:
+                  format: markdown
+          - name: image
+            label: Fotografia
+            fields:
+              - name: src
+                label: Fotografia
+                type: image
+                options:
+                  media: articles
+                  path: authors
+              - name: alt
+                label: Text alternatiu
+                type: string
+                description: Descriu la fotografia per a qui no la pot veure.
+              - name: caption
+                label: Peu de foto
+                type: string
+                required: false
+          - name: video
+            label: Vídeo
+            fields:
+              - name: url
+                label: URL de YouTube o Vimeo
+                type: string
+                description: Enllaç HTTPS al vídeo; es carregarà quan el lector ho demani.
+              - name: title
+                label: Títol accessible
+                type: string
+              - name: caption
+                label: Peu de vídeo
+                type: string
+                required: false
       - name: avatar
         label: Fotografia
         type: image
