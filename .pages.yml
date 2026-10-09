@@ -50,6 +50,25 @@ content:
         type: boolean
         description: "Marca els articles insígnia de l'autor seleccionat. Convenció editorial: cada autor destaca els articles que té atribuïts; els tres editors poden continuar gestionant tots els articles."
         default: false
+      - name: articleType
+        label: Tipus d'article
+        type: select
+        description: Classifica la forma o la intenció editorial, no el tema. Opcional per als articles antics.
+        required: false
+        options:
+          values:
+            - name: opinio
+              label: Opinió
+            - name: actualitat
+              label: Actualitat
+            - name: reflexio
+              label: Reflexió
+            - name: divulgacio
+              label: Divulgació
+            - name: experiencia
+              label: Experiència
+            - name: dialeg
+              label: Diàleg
       - name: summary
         label: Resum
         type: text

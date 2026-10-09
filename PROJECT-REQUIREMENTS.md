@@ -133,6 +133,14 @@ La portada ha de presentar el projecte com una experiència editorial, no només
 - La portada mostra els tres articles destacats més recents. No es mostra cap etiqueta obligatòria en les targetes.
 - Els articles arxivats o no publicats no poden aparéixer com a destacats públics.
 
+### 6.3 Tipus d'article
+
+- Cada article pot tindre un únic tipus editorial estructurat: `opinio`, `actualitat`, `reflexio`, `divulgacio`, `experiencia` o `dialeg`.
+- El tipus descriu la forma o la intenció del text, no el tema, i es gestiona des de Pages CMS.
+- El llistat permet filtrar per tipus i combinar-lo amb els filtres d'autor i l'ordenació per data existents.
+- El camp és opcional per a mantindre la compatibilitat amb articles antics; quan existeix, el validador només accepta els valors del catàleg.
+- El tipus no es mostra a la targeta ni a la pàgina de l'article.
+
 ### 6.4 Tots els articles
 
 - Mostrar el llistat complet d’articles públics.
@@ -191,6 +199,7 @@ Pages CMS és l’editor escollit. L’objectiu és que els autors treballen des
 | Data d’actualització | Recomanat | S’ha d’actualitzar quan el text canvia de forma significativa. |
 | Estat | Sí | `draft`, `published` o `archived`. |
 | Article destacat | No | Booleà opcional, desactivat per defecte; els destacats s’ordenen per data i prioritzen els llistats públics. |
+| Tipus d'article | No | Valor estructurat opcional del catàleg editorial; es pot filtrar al llistat. |
 | Resum | Sí | Text curt per a targetes, portada i SEO. |
 | Portada | Sí en la pràctica | Imatge obligatòria per mantenir una identitat visual consistent. |
 | Contingut | Sí | Llista de blocs visuals. |
@@ -543,6 +552,7 @@ Mesures tècniques:
   "updatedAt": "2026-08-31",
   "status": "draft",
   "featured": false,
+  "articleType": "reflexio",
   "summary": "Resum breu.",
   "cover": "/assets/articles/covers/portada.webp",
   "blocks": []

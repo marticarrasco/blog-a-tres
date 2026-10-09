@@ -5,6 +5,7 @@
   "publishedAt": "2026-08-29",
   "updatedAt": "2026-09-09",
   "status": "published",
+  "articleType": "divulgacio",
   "featured": false,
   "summary": "Compartir una història és fàcil; donar-li context demana una mica més de temps.",
   "cover": "/assets/articles/inline/desinformacio-context-web.jpg",

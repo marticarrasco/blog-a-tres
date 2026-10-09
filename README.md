@@ -34,7 +34,7 @@ La validació comprova camps obligatoris, slugs, autors, dates, portades, mida i
 
 La font de veritat és [PROJECT-REQUIREMENTS.md](PROJECT-REQUIREMENTS.md). El model de Pages CMS permet text enriquit, imatges, embeds i una opinió alternativa. Els fitxers d’imatge acceptats són JPEG, PNG, WebP i GIF, amb noms sanejats i un límit de 5 MB verificat abans del build. SVG i pujada directa de vídeo queden desactivats en la primera versió.
 
-Els articles destacats per autor ja tenen un camp editorial a Pages CMS i prioritzen els llistats públics; la portada mostra els tres més recents. La gestió per autor és una convenció editorial i els tres editors poden continuar editant qualsevol article. Les altres millores —tipus d’article, paraules clau, cerca avançada i avisos per correu— estan descrites a [PROPOSTES-MILLORES.md](PROPOSTES-MILLORES.md).
+Els articles destacats per autor ja tenen un camp editorial a Pages CMS i prioritzen els llistats públics; la portada mostra els tres més recents. La gestió per autor és una convenció editorial i els tres editors poden continuar editant qualsevol article. Els articles tenen també un tipus editorial estructurat que es pot filtrar conjuntament amb l’autor. Les millores pendents —paraules clau, cerca avançada i avisos per correu— estan descrites a [PROPOSTES-MILLORES.md](PROPOSTES-MILLORES.md).
 
 Les notes són un espai intern compartit per a l’equip editorial: serveixen per guardar prompts, criteris i recursos de treball, no es publiquen al web. Per afegir-ne una, entra a `NOTES` dins Pages CMS i crea una nota nova; el repositori la guardarà a `content/notes/`.
 

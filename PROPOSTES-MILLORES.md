@@ -1,10 +1,10 @@
 # Propostes de millora — Entre línies
 
 **Data:** 9 d’octubre de 2026  
-**Estat:** millora 1 implementada en `codex/destacats-per-autor`; la resta continua pendent d’implementació  
+**Estat:** millores 1 i 2 implementades; les millores 3–5 continuen pendents d’implementació
 **Abast:** cinc millores independents per al blog existent
 
-Aquest document concreta cinc millores per al blog. La primera ja està implementada; les altres quatre es poden treballar en branques independents, mantenint les dependències indicades.
+Aquest document concreta cinc millores per al blog. Les dues primeres ja estan implementades; les altres tres es poden treballar en branques independents, mantenint les dependències indicades.
 
 ## Objectius comuns
 
@@ -64,6 +64,8 @@ El catàleg és una proposta per validar editorialment. Si les distincions resul
 - El lector podrà filtrar el llistat d’articles per tipus.
 - El tipus es podrà combinar amb els filtres d’autor i data de la cerca.
 - Queda pendent decidir si el tipus es mostrarà a la targeta o a la pàgina de l’article. No és necessari mostrar-lo per poder usar-lo com a filtre.
+
+**Implementació:** el catàleg s'ha afegit a Pages CMS i a la validació del contingut. El filtre de tipus es pot combinar amb l'autor i l'ordenació per data disponible al llistat. El camp és opcional per compatibilitat amb articles antics; els articles publicats actuals ja tenen una classificació inicial. Els tipus no es mostren en les targetes ni en la pàgina de l'article.
 
 
 

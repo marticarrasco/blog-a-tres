@@ -15,6 +15,15 @@ export const authors = Object.entries(authorFiles)
   .map(([path, author]) => normaliseAuthor(author, path))
   .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
+export const articleTypes = [
+  { value: "opinio", label: "Opinió" },
+  { value: "actualitat", label: "Actualitat" },
+  { value: "reflexio", label: "Reflexió" },
+  { value: "divulgacio", label: "Divulgació" },
+  { value: "experiencia", label: "Experiència" },
+  { value: "dialeg", label: "Diàleg" },
+];
+
 const authorsByReference = new Map();
 authors.forEach((author) => {
   const filename = `content/authors/${fileStem(author.sourcePath)}.json`;
