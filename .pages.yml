@@ -6,6 +6,13 @@ media:
     categories: [image]
     extensions: [jpg, jpeg, png, webp, gif]
     rename: safe
+  - name: author-images
+    label: Fotografies dels autors
+    input: public/assets/articles/avatars
+    output: /assets/articles/avatars
+    categories: [image]
+    extensions: [jpg, jpeg, png, webp, gif]
+    rename: safe
 
 content:
   - name: posts
@@ -174,7 +181,7 @@ content:
     filename: "{handle}.json"
     view:
       primary: name
-      fields: [name, handle]
+      fields: [name, handle, avatar, profileBackground]
     fields:
       - name: order
         label: Ordre de presentació
@@ -255,19 +262,19 @@ content:
                 type: string
                 required: false
       - name: avatar
-        label: Fotografia
+        label: Fotografia de perfil
+        description: Retrat que apareix a la capçalera de la pàgina personal de l'autor.
         type: image
         required: false
         options:
-          media: articles
-          path: avatars
+          media: author-images
       - name: profileBackground
-        label: Fons de la pàgina de l'autor
+        label: Imatge de fons
+        description: Imatge panoràmica que apareix darrere del retrat a la capçalera personal de l'autor.
         type: image
         required: false
         options:
-          media: articles
-          path: avatars
+          media: author-images
       - name: links
         label: Enllaços
         type: object
